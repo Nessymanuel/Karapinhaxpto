@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="IService\Interface1.cs" />
+    <Compile Remove="IService\IServiceService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Karapinhaxpto.DTOs\Karapinhaxpto.DTOs.csproj" />
+    <ProjectReference Include="..\Karapinhaxpto.Model\Karapinhaxpto.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IService\NewFolder\" />
+  </ItemGroup>
+
+</Project>

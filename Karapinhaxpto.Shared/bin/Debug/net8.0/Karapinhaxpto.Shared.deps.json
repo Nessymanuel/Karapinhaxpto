@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Karapinhaxpto.Shared/1.0.0": {
+        "dependencies": {
+          "Karapinhaxpto.DTOs": "1.0.0",
+          "Karapinhaxpto.Model": "1.0.0"
+        },
+        "runtime": {
+          "Karapinhaxpto.Shared.dll": {}
+        }
+      },
+      "Karapinhaxpto.DTOs/1.0.0": {
+        "runtime": {
+          "Karapinhaxpto.DTOs.dll": {}
+        }
+      },
+      "Karapinhaxpto.Model/1.0.0": {
+        "runtime": {
+          "Karapinhaxpto.Model.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Karapinhaxpto.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Karapinhaxpto.DTOs/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Karapinhaxpto.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

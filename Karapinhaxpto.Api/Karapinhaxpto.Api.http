@@ -1,0 +1,6 @@
+@Karapinhaxpto.Api_HostAddress = http://localhost:5229
+
+GET {{Karapinhaxpto.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
