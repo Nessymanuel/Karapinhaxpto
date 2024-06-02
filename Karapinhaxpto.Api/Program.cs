@@ -31,6 +31,10 @@ builder.Services.AddTransient<IProfissionalScheduleRepository, ProfissionalSched
 builder.Services.AddTransient<IProfissionalScheduleService, ProfissionalScheduleService>();
 
 
+builder.Services.AddTransient<IScheduleRepository, ScheduleRepository>();
+builder.Services.AddTransient<IScheduleService, ScheduleService>();
+
+
 // conexão com o banco de dados
 builder.Services.AddDbContext<KarapinhaxptoContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
