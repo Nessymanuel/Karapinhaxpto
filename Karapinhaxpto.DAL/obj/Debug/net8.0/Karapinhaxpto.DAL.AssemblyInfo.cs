@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Karapinhaxpto.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b6c9908a5bd65adc0040de6ac4dbec0c845228e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e57384d28043654ebd6e6f582d2a455bbbe4707")]
 [assembly: System.Reflection.AssemblyProductAttribute("Karapinhaxpto.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Karapinhaxpto.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
