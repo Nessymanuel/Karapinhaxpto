@@ -10,5 +10,7 @@ public class Profile
 {
     [Key]
     public  int Id { get; set; }
-    public int Description { get; set; }
+    public string Description { get; set; }
+
+    
 }

@@ -14,12 +14,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-//Configuração da injecção de dependencia
+////Configuração da injecção de dependencia
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 
 builder.Services.AddTransient<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddTransient<IAppointmentService, AppointmentService>();
+
+builder.Services.AddTransient<IProfileRepository, ProfileRepository>();
+builder.Services.AddTransient<IProfileService, ProfileService>();
 
 
 // conexão com o banco de dados

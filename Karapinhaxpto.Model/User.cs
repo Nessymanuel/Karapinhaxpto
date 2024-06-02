@@ -21,7 +21,6 @@ public class User
     public int ? ProfileId { get; set; }
     [ForeignKey(nameof(ProfileId))]
     public Profile ? Profile { get; set; }
-
     public bool Activate { get; set; }
     public bool Status { get; set; }
 

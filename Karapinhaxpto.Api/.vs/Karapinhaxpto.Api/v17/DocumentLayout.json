@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5E2B0056-0FA4-4A46-904C-0151A6150167}|Karapinhaxpto.Api.csproj|c:\\users\\makemoney02\\desktop\\dev\\c#\\karapinhaxpto.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5E2B0056-0FA4-4A46-904C-0151A6150167}|Karapinhaxpto.Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5E2B0056-0FA4-4A46-904C-0151A6150167}|Karapinhaxpto.Api.csproj|c:\\users\\makemoney02\\desktop\\dev\\c#\\karapinhaxpto.api\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E2B0056-0FA4-4A46-904C-0151A6150167}|Karapinhaxpto.Api.csproj|solutionrelative:controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E2B0056-0FA4-4A46-904C-0151A6150167}|Karapinhaxpto.Api.csproj|c:\\users\\makemoney02\\desktop\\dev\\c#\\karapinhaxpto.api\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E2B0056-0FA4-4A46-904C-0151A6150167}|Karapinhaxpto.Api.csproj|solutionrelative:controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E2B0056-0FA4-4A46-904C-0151A6150167}|Karapinhaxpto.Api.csproj|c:\\users\\makemoney02\\desktop\\dev\\c#\\karapinhaxpto.api\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E2B0056-0FA4-4A46-904C-0151A6150167}|Karapinhaxpto.Api.csproj|solutionrelative:controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +27,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Api\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Api\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAoAAACAmZmZmZkdwBEAAABJAAAA",
+              "Title": "ProfileController.cs",
+              "DocumentMoniker": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Api\\Controllers\\ProfileController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProfileController.cs",
+              "ToolTip": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Api\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "Controllers\\ProfileController.cs",
+              "ViewState": "AQIAABcAAADg//////82wBwAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-01T16:28:20.921Z",
+              "WhenOpened": "2024-06-02T07:10:57.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Api\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Api\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "Controllers\\CategoryController.cs",
+              "ViewState": "AQIAABgAAADAzMzMzMwmwBwAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T07:10:55.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppointmentController.cs",
+              "DocumentMoniker": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Api\\Controllers\\AppointmentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AppointmentController.cs",
+              "ToolTip": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Api\\Controllers\\AppointmentController.cs",
+              "RelativeToolTip": "Controllers\\AppointmentController.cs",
+              "ViewState": "AQIAABcAAACAzMzMzMwEwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T07:10:54.198Z",
               "EditorCaption": ""
             }
           ]

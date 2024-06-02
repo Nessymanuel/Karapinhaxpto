@@ -26,7 +26,7 @@ public class AppointmentController : ControllerBase
         return Ok(await _appointmentService.GetById(id));
     }
 
-    [HttpPost("{id}")]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteCategory(int id)
     {
         return Ok(await _appointmentService.Delete(id));

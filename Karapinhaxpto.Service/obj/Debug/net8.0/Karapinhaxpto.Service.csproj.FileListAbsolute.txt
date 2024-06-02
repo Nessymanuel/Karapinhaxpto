@@ -19,3 +19,4 @@ C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Service\bin\Debug\net8.0\Karap
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Service\bin\Debug\net8.0\Karapinhaxpto.Shared.pdb
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Service\obj\Debug\net8.0\Karapinhaxpto.Service.csproj.AssemblyReference.cache
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Service\obj\Debug\net8.0\Karapinh.6BAD779E.Up2Date
+C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Service\obj\Debug\net8.0\Karapinhaxpto.Service.sourcelink.json

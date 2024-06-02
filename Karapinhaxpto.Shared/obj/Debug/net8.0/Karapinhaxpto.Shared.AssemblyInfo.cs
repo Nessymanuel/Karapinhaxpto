@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Karapinhaxpto.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cbfab58b285776eb03eee3556be997d96acc80fa")]
 [assembly: System.Reflection.AssemblyProductAttribute("Karapinhaxpto.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Karapinhaxpto.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -9,3 +9,4 @@ C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Model\obj\Debug\net8.0\Karapin
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Model\obj\Debug\net8.0\refint\Karapinhaxpto.Model.dll
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Model\obj\Debug\net8.0\Karapinhaxpto.Model.pdb
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Model\obj\Debug\net8.0\ref\Karapinhaxpto.Model.dll
+C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Model\obj\Debug\net8.0\Karapinhaxpto.Model.sourcelink.json

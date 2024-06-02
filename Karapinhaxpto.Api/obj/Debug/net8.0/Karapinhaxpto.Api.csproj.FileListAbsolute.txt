@@ -145,3 +145,4 @@ C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\bin\Debug\net8.0\Karapinha
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\bin\Debug\net8.0\Karapinhaxpto.DTOs.pdb
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\bin\Debug\net8.0\Karapinhaxpto.Service.pdb
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\bin\Debug\net8.0\Karapinhaxpto.Shared.pdb
+C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\obj\Debug\net8.0\Karapinhaxpto.Api.sourcelink.json

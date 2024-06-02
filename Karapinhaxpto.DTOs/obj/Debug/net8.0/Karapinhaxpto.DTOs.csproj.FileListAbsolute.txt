@@ -9,3 +9,4 @@ C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.DTOs\obj\Debug\net8.0\Karapinh
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.DTOs\obj\Debug\net8.0\refint\Karapinhaxpto.DTOs.dll
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.DTOs\obj\Debug\net8.0\Karapinhaxpto.DTOs.pdb
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.DTOs\obj\Debug\net8.0\ref\Karapinhaxpto.DTOs.dll
+C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.DTOs\obj\Debug\net8.0\Karapinhaxpto.DTOs.sourcelink.json
