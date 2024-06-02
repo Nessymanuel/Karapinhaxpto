@@ -12,14 +12,14 @@ public class Profissional
 {
     [Key]
     public int Id { get; set; }
-    public string Description { get; set; }
+    public string ? Description { get; set; }
     public int Service_ID { get; set; }
     [ForeignKey(nameof(Service_ID))]
-    public Service service { get; set; }
-    public string Email { get; set; }
-    public string Photo { get; set; }
-    public string Phone { get; set; }
-    public string Id_Card { get; set; }
+    public Service ? service { get; set; }
+    public string ? Email { get; set; }
+    public string ? Photo { get; set; }
+    public string ? Phone { get; set; }
+    public string ? Id_Card { get; set; }
 
 
 

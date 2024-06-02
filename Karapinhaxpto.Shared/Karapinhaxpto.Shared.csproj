@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Compile Remove="IService\Interface1.cs" />
-    <Compile Remove="IService\IServiceService.cs" />
   </ItemGroup>
 
   <ItemGroup>

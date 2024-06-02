@@ -1,47 +1,48 @@
 ﻿
 
 
-//using Karapinhaxpto.DTOs;
-//using Karapinhaxpto.Shared.IService;
-//using Microsoft.AspNetCore.Http;
-//using Microsoft.AspNetCore.Mvc;
+using Karapinhaxpto.DTOs;
+using Karapinhaxpto.Shared.IRepository;
+using Karapinhaxpto.Shared.IService;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
-//namespace Karapinhaxpto.Api.Controllers;
-//[Route("api/[controller]")]
-//[ApiController]
-//public class ServiceController : ControllerBase
-//{
-//    private readonly IService service;
+namespace Karapinhaxpto.Api.Controllers;
+[Route("api/[controller]")]
+[ApiController]
+public class ServiceController : ControllerBase
+{
+    private readonly IServiceService _serviceService;
 
-//    public ServiceController(ICategoryService categoryService)
-//    {
-//        _categoryService = categoryService;
-//    }
+    public ServiceController(IServiceService serviceService)
+    {
+        _serviceService = serviceService;
+    }
 
-//    [HttpGet]
-//    public async Task<IActionResult> GetCategory()
-//    {
-//        return Ok(await _categoryService.GetAll());
-//    }
-//    [HttpGet("{id}")]
-//    public async Task<IActionResult> GetCategoryById(int id)
-//    {
-//        return Ok(await _categoryService.GetById(id));
-//    }
+    [HttpGet]
+    public async Task<IActionResult> GetService()
+    {
+        return Ok(await _serviceService.GetAll());
+    }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetServiceById(int id)
+    {
+        return Ok(await _serviceService.GetById(id));
+    }
 
-//    [HttpPost("{id}")]
-//    public async Task<IActionResult> DeleteCategory(int id)
-//    {
-//        return Ok(await _categoryService.Delete(id));
-//    }
-//    [HttpPost]
-//    public async Task<IActionResult> CreateCategory(CategoryAddDTO categoryAddDTO)
-//    {
-//        return Ok(await _categoryService.Create(categoryAddDTO));
-//    }
-//    [HttpPut]
-//    public async Task<IActionResult> UpdateCategory(CategoryUpdateDTO categoryUpdateDTO)
-//    {
-//        return Ok(await _categoryService.Update(categoryUpdateDTO));
-//    }
-//}
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteService(int id)
+    {
+        return Ok(await _serviceService.Delete(id));
+    }
+    [HttpPost]
+    public async Task<IActionResult> CreateService(ServiceAddDTO serviceAddDTO)
+    {
+        return Ok(await _serviceService.Create(serviceAddDTO));
+    }
+    [HttpPut]
+    public async Task<IActionResult> UpdateService(ServiceUpdateDTO serviceUpdateDTO)
+    {
+        return Ok(await _serviceService.Update(serviceUpdateDTO));
+    }
+}

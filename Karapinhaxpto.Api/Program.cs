@@ -30,9 +30,17 @@ builder.Services.AddTransient<IProfissionalService, ProfissionalService>();
 builder.Services.AddTransient<IProfissionalScheduleRepository, ProfissionalScheduleRepository>();
 builder.Services.AddTransient<IProfissionalScheduleService, ProfissionalScheduleService>();
 
-
 builder.Services.AddTransient<IScheduleRepository, ScheduleRepository>();
 builder.Services.AddTransient<IScheduleService, ScheduleService>();
+
+builder.Services.AddTransient<IServiceRepository, ServiceRepository>();
+builder.Services.AddTransient<IServiceService, ServiceService>();
+
+builder.Services.AddTransient<IServiceAppointmentRepository, ServiceAppointmentRepository>();
+builder.Services.AddTransient<IServiceAppointmentService, ServiceAppointmentService>();
+
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 
 // conexão com o banco de dados

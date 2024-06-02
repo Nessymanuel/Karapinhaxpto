@@ -14,7 +14,7 @@ public class ServiceAppointment
 
     public int AppointmentId { get; set; }
     [ForeignKey(nameof(AppointmentId))]
-     public Appointment Appointment { get; set; }
+     public Appointment ? Appointment { get; set; }
 
     [ForeignKey(nameof(CategoryId))]
     public int CategoryId { get; set; }

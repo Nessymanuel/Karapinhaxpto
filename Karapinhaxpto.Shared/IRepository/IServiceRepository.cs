@@ -6,6 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Karapinhaxpto.Shared.IRepository;
-public interface IService : IGenericRepository<Service>
+public interface IServiceRepository : IGenericRepository<Service>
 {
 }

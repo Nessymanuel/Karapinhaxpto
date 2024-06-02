@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 namespace Karapinhaxpto.DTOs;
 public class ProfileAddDTO
 {
-    public  string  Descripton { get; set; }
+    public  string  ? Descripton { get; set; }
 }

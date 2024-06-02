@@ -9,10 +9,10 @@ namespace Karapinhaxpto.DTOs;
 public class ProfissionalAddDTO
 {
     public int Id { get; set; }
-    public string Description { get; set; }
+    public string ? Description { get; set; }
     public int Service_ID { get; set; }
-    public string Email { get; set; }
-    public string Photo { get; set; }
-    public string Phone { get; set; }
-    public string Id_Card { get; set; }
+    public string ? Email { get; set; }
+    public string ? Photo { get; set; }
+    public string ? Phone { get; set; }
+    public string ? Id_Card { get; set; }
 }
