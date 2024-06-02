@@ -14,7 +14,6 @@ C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\obj\Debug\net8.0\Karapinha
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\obj\Debug\net8.0\Karapinhaxpto.Api.AssemblyInfoInputs.cache
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\obj\Debug\net8.0\Karapinhaxpto.Api.AssemblyInfo.cs
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\obj\Debug\net8.0\Karapinhaxpto.Api.csproj.CoreCompileInputs.cache
-C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\obj\Debug\net8.0\Karapinhaxpto.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\obj\Debug\net8.0\Karapinhaxpto.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\obj\Debug\net8.0\staticwebassets.development.json

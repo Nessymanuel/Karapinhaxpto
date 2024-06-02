@@ -24,6 +24,9 @@ builder.Services.AddTransient<IAppointmentService, AppointmentService>();
 builder.Services.AddTransient<IProfileRepository, ProfileRepository>();
 builder.Services.AddTransient<IProfileService, ProfileService>();
 
+builder.Services.AddTransient<IProfissionalRepository, ProfissionalRepository>();
+builder.Services.AddTransient<IProfissionalService, ProfissionalService>();
+
 
 // conexão com o banco de dados
 builder.Services.AddDbContext<KarapinhaxptoContext>(options =>

@@ -8,5 +8,5 @@ namespace Karapinhaxpto.DTOs;
 public class ProfileUpdateDTO
 {
     public int Id { get; set; }
-    public required string Description { get; set; }
+    public  string Description { get; set; }
 }

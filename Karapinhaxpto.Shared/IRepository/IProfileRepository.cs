@@ -9,4 +9,5 @@ namespace Karapinhaxpto.Shared.IRepository;
 public interface IProfileRepository : IGenericRepository<Profile>
 {
     
+
 }
