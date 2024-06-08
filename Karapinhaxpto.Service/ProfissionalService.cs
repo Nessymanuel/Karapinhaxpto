@@ -25,7 +25,7 @@ public class ProfissionalService : IProfissionalService
             Phone = profissionalAddDTO.Phone,
             Photo = profissionalAddDTO.Photo,
             Id_Card = profissionalAddDTO.Id_Card,
-            Service_ID = profissionalAddDTO.Service_ID
+            Category_ID = profissionalAddDTO.Category_ID
     };
         return await _profissionalRepository.Create(profissional);
     }
@@ -64,7 +64,7 @@ public class ProfissionalService : IProfissionalService
             profissional.Photo = profissionalUpdateDTO.Photo;
             profissional.Email = profissionalUpdateDTO.Email;
             profissional.Id_Card = profissionalUpdateDTO.Id_Card;
-            profissional.Service_ID = profissionalUpdateDTO.Service_ID;
+            profissional.Category_ID = profissionalUpdateDTO.Category_ID;
 
             return await _profissionalRepository.Update(profissional);
         }

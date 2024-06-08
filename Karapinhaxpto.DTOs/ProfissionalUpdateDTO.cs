@@ -10,7 +10,7 @@ public class ProfissionalUpdateDTO
 {
     public int Id { get; set; }
     public string Description { get; set; }
-    public int Service_ID { get; set; }
+    public int Category_ID { get; set; }
     public string Email { get; set; }
     public string Photo { get; set; }
     public string Phone { get; set; }

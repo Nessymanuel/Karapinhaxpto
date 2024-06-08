@@ -10,3 +10,14 @@ C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.DTOs\obj\Debug\net8.0\refint\K
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.DTOs\obj\Debug\net8.0\Karapinhaxpto.DTOs.pdb
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.DTOs\obj\Debug\net8.0\ref\Karapinhaxpto.DTOs.dll
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.DTOs\obj\Debug\net8.0\Karapinhaxpto.DTOs.sourcelink.json
+C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.DTOs\bin\Debug\net8.0\Karapinhaxpto.DTOs.deps.json
+C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.DTOs\bin\Debug\net8.0\Karapinhaxpto.DTOs.dll
+C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.DTOs\bin\Debug\net8.0\Karapinhaxpto.DTOs.pdb
+C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.DTOs\obj\Debug\net8.0\Karapinhaxpto.DTOs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.DTOs\obj\Debug\net8.0\Karapinhaxpto.DTOs.AssemblyInfoInputs.cache
+C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.DTOs\obj\Debug\net8.0\Karapinhaxpto.DTOs.AssemblyInfo.cs
+C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.DTOs\obj\Debug\net8.0\Karapinhaxpto.DTOs.csproj.CoreCompileInputs.cache
+C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.DTOs\obj\Debug\net8.0\Karapinhaxpto.DTOs.dll
+C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.DTOs\obj\Debug\net8.0\refint\Karapinhaxpto.DTOs.dll
+C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.DTOs\obj\Debug\net8.0\Karapinhaxpto.DTOs.pdb
+C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.DTOs\obj\Debug\net8.0\ref\Karapinhaxpto.DTOs.dll
