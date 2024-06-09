@@ -14,4 +14,5 @@ public interface IServiceService
     Task<bool> Update(ServiceUpdateDTO serviceUpdateDTO);
     Task<bool> Create(ServiceAddDTO serviceAddDTO);
     Task<bool> Delete(int id);
+    //Task <Service> GetByCategory(int categoryId);
 }

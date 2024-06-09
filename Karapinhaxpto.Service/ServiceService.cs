@@ -47,6 +47,10 @@ namespace Karapinhaxpto.Service
         {
             return await _serviceRepository.GetById(id);
         }
+        //public async Task<Model.Service> GetByCategory(int id)
+        //{
+        //    return await _serviceRepository.GetByCategory(id);
+        //}
 
         public async Task<bool> Update(ServiceUpdateDTO serviceUpdateDTO)
         {

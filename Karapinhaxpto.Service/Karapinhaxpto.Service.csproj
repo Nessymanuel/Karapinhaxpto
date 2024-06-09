@@ -13,4 +13,9 @@
     <ProjectReference Include="..\Karapinhaxpto.Shared\Karapinhaxpto.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.6.0" />
+    <PackageReference Include="MimeKit" Version="4.6.0" />
+  </ItemGroup>
+
 </Project>

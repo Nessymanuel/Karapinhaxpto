@@ -86,6 +86,10 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
@@ -380,6 +384,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

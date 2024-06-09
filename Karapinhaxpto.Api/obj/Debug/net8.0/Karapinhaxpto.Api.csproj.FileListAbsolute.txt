@@ -293,3 +293,7 @@ C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.Api\obj\Debug\
 C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.Api\obj\Debug\net8.0\Karapinhaxpto.Api.genruntimeconfig.cache
 C:\Users\makemoney02\Desktop\Dev\Karapinhaxpto-main\Karapinhaxpto.Api\obj\Debug\net8.0\ref\Karapinhaxpto.Api.dll
 C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\obj\Debug\net8.0\Karapinhaxpto.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\bin\Debug\net8.0\MailKit.dll
+C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\bin\Debug\net8.0\MimeKit.dll
+C:\Users\makemoney02\Desktop\Dev\C#\Karapinhaxpto.Api\bin\Debug\net8.0\NETCore.MailKit.dll

@@ -1,3 +1,4 @@
+using FluentAssertions.Common;
 using Karapinhaxpto.DAL;
 using Karapinhaxpto.DAL.Repository;
 using Karapinhaxpto.Service;
@@ -10,6 +11,23 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
+
+// Configurar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
+// Adicionar serviços
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -42,6 +60,12 @@ builder.Services.AddTransient<IServiceAppointmentService, ServiceAppointmentServ
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
 
+//builder.Services.AddTransient<IAuthRepository, AuthRepository>();
+//builder.Services.AddTransient<IAuthService, AuthService>();
+
+builder.Services.Configure<IEmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddTransient<IEmailService, EmailService>();
+
 
 // conexão com o banco de dados
 builder.Services.AddDbContext<KarapinhaxptoContext>(options =>
@@ -50,7 +74,8 @@ builder.Services.AddDbContext<KarapinhaxptoContext>(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
+// Configurar o pipeline HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -60,6 +85,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("AllowAll");
 
 app.MapControllers();
 

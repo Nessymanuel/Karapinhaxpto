@@ -17,13 +17,21 @@ public class UserService : IUserService
 {
 
     private readonly IUserRepository _userRepository;
+    private readonly IEmailService _emailService;
 
-    public UserService(IUserRepository userRepository)
+    public UserService(IUserRepository userRepository, IEmailService emailService)
     {
         _userRepository = userRepository;
+        _emailService = emailService;
     }
+
+
+
+
     public async Task<bool> Create(UserAddDTO userAddDTO)
     {
+
+
         var user = new User
         {
             FullName = userAddDTO.FullName,
@@ -38,6 +46,11 @@ public class UserService : IUserService
             ProfileId = userAddDTO.ProfileId,
             
         };
+        
+
+        // Envio de email de ativação
+        var activationLink = $"https://localhost:7104/api/User/activate/{user.Id}";
+        await _emailService.SendEmail(user.Email, "Assunto: Ativação de Conta \n", $"Clique no link para ativar sua conta: {activationLink}");
         return await _userRepository.Create(user);
     }
 
@@ -81,5 +94,15 @@ public class UserService : IUserService
             return await _userRepository.Update(user);
         }
         return false;
+    }
+
+    public async Task UserActivate(int id)
+    {
+        var user = await _userRepository.GetById(id);
+        if (user != null)
+        {
+            user.Activate = true;
+            await _userRepository.Update(user);
+        }
     }
 }
