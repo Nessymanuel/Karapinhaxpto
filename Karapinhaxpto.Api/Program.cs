@@ -1,6 +1,7 @@
 using FluentAssertions.Common;
 using Karapinhaxpto.DAL;
 using Karapinhaxpto.DAL.Repository;
+using Karapinhaxpto.Model;
 using Karapinhaxpto.Service;
 using Karapinhaxpto.Shared.IRepository;
 using Karapinhaxpto.Shared.IService;
@@ -60,11 +61,15 @@ builder.Services.AddTransient<IServiceAppointmentService, ServiceAppointmentServ
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
 
-//builder.Services.AddTransient<IAuthRepository, AuthRepository>();
-//builder.Services.AddTransient<IAuthService, AuthService>();
+
+
+
+
+
 
 builder.Services.Configure<IEmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<IEmailService, EmailService>();
+
 
 
 // conexão com o banco de dados

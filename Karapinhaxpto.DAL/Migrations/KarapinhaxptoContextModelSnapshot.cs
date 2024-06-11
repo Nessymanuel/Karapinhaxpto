@@ -93,6 +93,9 @@ namespace Karapinhaxpto.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Category_ID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -108,12 +111,9 @@ namespace Karapinhaxpto.DAL.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Service_ID")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("Service_ID");
+                    b.HasIndex("Category_ID");
 
                     b.ToTable("Profissional");
                 });
@@ -222,6 +222,7 @@ namespace Karapinhaxpto.DAL.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
@@ -231,6 +232,10 @@ namespace Karapinhaxpto.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
@@ -266,13 +271,13 @@ namespace Karapinhaxpto.DAL.Migrations
 
             modelBuilder.Entity("Karapinhaxpto.Model.Profissional", b =>
                 {
-                    b.HasOne("Karapinhaxpto.Model.Service", "service")
+                    b.HasOne("Karapinhaxpto.Model.Service", "category")
                         .WithMany()
-                        .HasForeignKey("Service_ID")
+                        .HasForeignKey("Category_ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("service");
+                    b.Navigation("category");
                 });
 
             modelBuilder.Entity("Karapinhaxpto.Model.ProfissionalSchedule", b =>

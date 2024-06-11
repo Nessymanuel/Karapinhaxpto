@@ -8,6 +8,7 @@ namespace Karapinhaxpto.Shared.IRepository;
 public interface IGenericRepository<T>
 {
 
+   
     Task <T>  GetById(int id);
     Task <bool> Create(T entity);
     Task <bool> Delete(T entity);

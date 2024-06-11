@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "w5WSD5kD4rFJm9UR3zIt0hsN6nKigqtiIs1ucTkkERPTWSBmn+UiIc5B2e651GbKeHYjzZzojDlzFyKuk8n8Tw==",
+  "dgSpecHash": "sp5sEzRZVkVp7H6Lm+uZX4JBT1VZ8uQciFCjjit+CX953RTmnr8LUDMJG46IHeGY4I/fu/5U4tCCNDtCEWoigA==",
   "success": true,
   "projectFilePath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.DAL\\Karapinhaxpto.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\makemoney02\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\makemoney02\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\makemoney02\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\makemoney02\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\makemoney02\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\makemoney02\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",

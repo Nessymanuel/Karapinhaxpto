@@ -24,7 +24,7 @@ public class EmailService : IEmailService
     {
         var emailMessage = new MimeMessage();
         emailMessage.From.Add(new MailboxAddress(_emailSettings.SenderName, _emailSettings.SenderEmail));
-        emailMessage.To.Add(new MailboxAddress("20200780@isptec.co.ao", "20200780@isptec.co.ao"));
+        emailMessage.To.Add(new MailboxAddress("", "20200780@isptec.co.ao"));
         emailMessage.Subject = subject;
         emailMessage.Body = new TextPart("plain") { Text = message };
 

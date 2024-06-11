@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "eCu3T9e/+UQdcBfVDzWtZjIUZ2x9hfScKKGdW6bBQ354hVlVpqhj9Tt1Hof96pOc10dtSjxYHuZA/dsyHexnsQ==",
+  "dgSpecHash": "wNrRPTPbOM/p46z6jqMDUw/hAFbbuJ6GYa41xyTvQR/OHkCQ1CeB04RZgxCn73TmOiMvGGpFgHjCIo1XEmZTdg==",
   "success": true,
   "projectFilePath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Service\\Karapinhaxpto.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\makemoney02\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\makemoney02\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\makemoney02\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\makemoney02\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\makemoney02\\.nuget\\packages\\mailkit\\4.6.0\\mailkit.4.6.0.nupkg.sha512",
     "C:\\Users\\makemoney02\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

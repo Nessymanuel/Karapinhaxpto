@@ -15,6 +15,5 @@ public class UserAddDTO
     public string ? ID_Card { get; set; }
     public string ? Username { get; set; }
     public int ? ProfileId { get; set; }
-    public bool ? Activate { get; set; }
-    public bool ? Status { get; set; }
+
 }

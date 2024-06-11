@@ -15,4 +15,5 @@ public interface IUserService
     Task<bool> Create(UserAddDTO userAddDTO);
     Task<bool> Delete(int id);
     Task UserActivate(int id);
+    Task<AuthResultDTO> Login(UserLoginDTO userLoginDTO);
 }

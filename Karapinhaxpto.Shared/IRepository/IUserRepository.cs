@@ -9,5 +9,5 @@ using System.Threading.Tasks;
 namespace Karapinhaxpto.Shared.IRepository;
 public interface IUserRepository : IGenericRepository<User>
 {
-
+    Task<User> GetByEmail(string username);
 }
