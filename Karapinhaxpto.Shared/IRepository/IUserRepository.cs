@@ -10,4 +10,5 @@ namespace Karapinhaxpto.Shared.IRepository;
 public interface IUserRepository : IGenericRepository<User>
 {
     Task<User> GetByEmail(string username);
+   // Task<List<Model.Service>> GetByCategory(int categoryId);
 }

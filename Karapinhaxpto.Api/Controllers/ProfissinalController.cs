@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Karapinhaxpto.Api.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public class ProfissinalController: ControllerBase
+public class ProfissionalController: ControllerBase
 {
 
     private readonly IProfissionalService _profissionalService;
 
-    public ProfissinalController(IProfissionalService profissionalService)
+    public ProfissionalController(IProfissionalService profissionalService)
     {
         _profissionalService = profissionalService;
     }

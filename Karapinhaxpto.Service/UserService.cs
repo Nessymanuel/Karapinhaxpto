@@ -80,7 +80,7 @@ public class UserService : IUserService
 
         // Envio de email de ativação
         var activationLink = $"https://localhost:7104/api/User/activate/{user.Id}";
-        await _emailService.SendEmail(user.Email, "Assunto: Ativação de Conta \n", $"Clique no link para ativar sua conta: {activationLink}");
+        await _emailService.SendEmail(user.Email, "Assunto: Ativação de Conta \n", $"Clique no link para ativar sua conta:\n {activationLink}");
         return await _userRepository.Create(user);
     }
 
@@ -138,11 +138,7 @@ public class UserService : IUserService
                 throw new Exception("O número de BI é inválido. Deve estar no padrão angolano.");
             }
 
-            var exist = await _userRepository.GetByEmail(user.Email);
-            if (exist != null)
-            {
-                throw new Exception("Digite um outro email.");
-            }
+            
             var pass = user
                 .Password.Length;
             if (pass < 7)
@@ -164,7 +160,9 @@ public class UserService : IUserService
         {
             user.Activate = true;
             await _userRepository.Update(user);
+            
         } 
+
     }
 
     private bool IsValidEmail(string email)

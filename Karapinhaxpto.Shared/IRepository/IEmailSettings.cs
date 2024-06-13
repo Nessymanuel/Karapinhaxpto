@@ -8,11 +8,11 @@ namespace Karapinhaxpto.Shared.IRepository;
 
     public class IEmailSettings
     {
-        public string SmtpServer { get; set; }
-        public int SmtpPort { get; set; }
-        public string SmtpUser { get; set; }
-        public string SmtpPass { get; set; }
-        public string SenderName { get; set; }
-        public  string SenderEmail { get; set; }
+        public string Server { get; set; }
+        public int Port { get; set; }
+        public string User { get; set; }
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public  string Email { get; set; }
     }
 

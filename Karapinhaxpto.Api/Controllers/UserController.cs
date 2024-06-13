@@ -51,23 +51,7 @@ namespace Karapinhaxpto.Api.Controllers
         }
 
 
-        //public async Task<IActionResult> CreateUser([FromForm] UserAddDTO userAddDTO, IFormFile photo)
-        //{
-        //    if (photo != null)
-        //    {
-        //        // Salve a foto ou processe conforme necessário
-        //    }
-
-        //    var result = await _userService.Create(userAddDTO);
-        //    if (!result)
-        //    {
-        //        return BadRequest("Erro ao criar usuário.");
-        //    }
-
-        //    // Envie o e-mail para o administrador, se necessário
-        //    return Ok("Usuário registrado com sucesso. Aguardando ativação do administrador.");
-        //}
-
+      
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDTO userLoginDTO)
@@ -96,7 +80,8 @@ namespace Karapinhaxpto.Api.Controllers
         public async Task<IActionResult> UserActivate(int id)
         {
             await _userService.UserActivate(id);
-            return Ok();
+            
+            return Ok(new { message = "Conta ativada com sucesso!" });
         }
     }
 }

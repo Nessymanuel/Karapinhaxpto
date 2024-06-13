@@ -11,7 +11,6 @@ namespace Karapinhaxpto.Service;
 public class EmailService : IEmailService
 {
     private readonly IEmailSettings _emailSettings;
-    private readonly ILogger<EmailService> _logger;
 
     public EmailService(IOptions<IEmailSettings> emailSettings)
     {
@@ -23,19 +22,19 @@ public class EmailService : IEmailService
     public async Task SendEmail(string toEmail, string subject, string message)
     {
         var emailMessage = new MimeMessage();
-        emailMessage.From.Add(new MailboxAddress(_emailSettings.SenderName, _emailSettings.SenderEmail));
-        emailMessage.To.Add(new MailboxAddress("", "20200780@isptec.co.ao"));
+        emailMessage.From.Add(new MailboxAddress(_emailSettings.Name, _emailSettings.Email));
+        emailMessage.To.Add(new MailboxAddress("Adm", "graciethmanuel13@gmail.com"));
         emailMessage.Subject = subject;
         emailMessage.Body = new TextPart("plain") { Text = message };
 
-        using (var client = new SmtpClient())
+        using (var user = new SmtpClient())
         {
-            client.CheckCertificateRevocation = false;
-            client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-            await client.ConnectAsync(_emailSettings.SmtpServer, _emailSettings.SmtpPort, MailKit.Security.SecureSocketOptions.Auto);
-            await client.AuthenticateAsync(_emailSettings.SmtpUser, _emailSettings.SmtpPass);
-            await client.SendAsync(emailMessage);
-            await client.DisconnectAsync(true);
+            user.CheckCertificateRevocation = false;
+            user.ServerCertificateValidationCallback = (s, c, h, e) => true;
+            await user.ConnectAsync(_emailSettings.Server, _emailSettings.Port, MailKit.Security.SecureSocketOptions.Auto);
+            await user.AuthenticateAsync(_emailSettings.User, _emailSettings.Password);
+            await user.SendAsync(emailMessage);
+            await user.DisconnectAsync(true);
         }
     }
 }
