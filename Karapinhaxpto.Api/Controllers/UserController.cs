@@ -70,10 +70,21 @@ namespace Karapinhaxpto.Api.Controllers
 
 
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateUser(UserUpdateDTO userUpdateDTO)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserUpdateDTO userUpdateDTO)
         {
-            return Ok(await _userService.Update(userUpdateDTO));
+            if (id != userUpdateDTO.Id)
+            {
+                return BadRequest("O ID fornecido na URL não coincide com o ID no corpo da solicitação.");
+            }
+
+            var result = await _userService.Update(userUpdateDTO);
+            if (result)
+            {
+                return NoContent();
+            }
+
+            return NotFound();
         }
 
         [HttpGet("activate/{id}")]

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Karapinhaxpto.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de4c5e9cfb2b55a20f8322976f27e451cc9fc54e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a842e1cb6c4f70a6ce939ad78de70a20fb5dd2ed")]
 [assembly: System.Reflection.AssemblyProductAttribute("Karapinhaxpto.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Karapinhaxpto.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

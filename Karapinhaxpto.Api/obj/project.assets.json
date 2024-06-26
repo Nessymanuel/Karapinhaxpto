@@ -5262,11 +5262,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Api\\Karapinhaxpto.Api.csproj",
+      "projectUniqueName": "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.Api\\Karapinhaxpto.Api.csproj",
       "projectName": "Karapinhaxpto.Api",
-      "projectPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Api\\Karapinhaxpto.Api.csproj",
+      "projectPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.Api\\Karapinhaxpto.Api.csproj",
       "packagesPath": "C:\\Users\\makemoney02\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Api\\obj\\",
+      "outputPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\makemoney02\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5283,17 +5283,17 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.DAL\\Karapinhaxpto.DAL.csproj": {
-              "projectPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.DAL\\Karapinhaxpto.DAL.csproj"
+            "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.DAL\\Karapinhaxpto.DAL.csproj": {
+              "projectPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.DAL\\Karapinhaxpto.DAL.csproj"
             },
-            "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.DTOs\\Karapinhaxpto.DTOs.csproj": {
-              "projectPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.DTOs\\Karapinhaxpto.DTOs.csproj"
+            "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.DTOs\\Karapinhaxpto.DTOs.csproj": {
+              "projectPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.DTOs\\Karapinhaxpto.DTOs.csproj"
             },
-            "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Service\\Karapinhaxpto.Service.csproj": {
-              "projectPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Service\\Karapinhaxpto.Service.csproj"
+            "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.Service\\Karapinhaxpto.Service.csproj": {
+              "projectPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.Service\\Karapinhaxpto.Service.csproj"
             },
-            "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Shared\\Karapinhaxpto.Shared.csproj": {
-              "projectPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Shared\\Karapinhaxpto.Shared.csproj"
+            "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.Shared\\Karapinhaxpto.Shared.csproj": {
+              "projectPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.Shared\\Karapinhaxpto.Shared.csproj"
             }
           }
         }

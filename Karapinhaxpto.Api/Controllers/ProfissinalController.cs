@@ -1,4 +1,5 @@
 ﻿using Karapinhaxpto.DTOs;
+using Karapinhaxpto.Service;
 using Karapinhaxpto.Shared.IService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -38,9 +39,24 @@ public class ProfissionalController: ControllerBase
     {
         return Ok(await _profissionalService.Create(profissionalAddDTO));
     }
-    [HttpPut]
-    public async Task<IActionResult> UpdateProfissional(ProfissionalUpdateDTO profissionalUpdateDTO)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateProfissional(int id, [FromBody] ProfissionalUpdateDTO profissionalUpdateDTO)
     {
-        return Ok(await _profissionalService.Update(profissionalUpdateDTO));
+
+        if (id != profissionalUpdateDTO.Id)
+        {
+            return BadRequest("O ID fornecido na URL não coincide com o ID no corpo da solicitação.");
+        }
+
+        var result = await _profissionalService.Update(profissionalUpdateDTO);
+        if (result)
+        {
+            return NoContent();
+        }
+
+        return NotFound();
     }
+
+    
+    
 }

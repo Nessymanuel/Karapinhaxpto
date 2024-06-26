@@ -93,16 +93,13 @@ namespace Karapinhaxpto.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Category_ID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Id_Card")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
@@ -111,9 +108,12 @@ namespace Karapinhaxpto.DAL.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Service_ID")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("Category_ID");
+                    b.HasIndex("Service_ID");
 
                     b.ToTable("Profissional");
                 });
@@ -198,8 +198,9 @@ namespace Karapinhaxpto.DAL.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeOnly>("Time")
-                        .HasColumnType("time");
+                    b.Property<string>("Time")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -271,13 +272,13 @@ namespace Karapinhaxpto.DAL.Migrations
 
             modelBuilder.Entity("Karapinhaxpto.Model.Profissional", b =>
                 {
-                    b.HasOne("Karapinhaxpto.Model.Service", "category")
+                    b.HasOne("Karapinhaxpto.Model.Service", "service")
                         .WithMany()
-                        .HasForeignKey("Category_ID")
+                        .HasForeignKey("Service_ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("category");
+                    b.Navigation("service");
                 });
 
             modelBuilder.Entity("Karapinhaxpto.Model.ProfissionalSchedule", b =>

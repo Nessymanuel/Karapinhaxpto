@@ -1,4 +1,5 @@
-﻿using Karapinhaxpto.DAL.Repository;
+﻿using Karapinhaxpto.DAL;
+using Karapinhaxpto.DAL.Repository;
 using Karapinhaxpto.DTOs;
 using Karapinhaxpto.Model;
 using Karapinhaxpto.Shared.IRepository;
@@ -76,10 +77,10 @@ public class UserService : IUserService
             throw new Exception("Digite uma passeword com pelo menos 8 caracteres.");
         }
 
-
+        var nUser = await _userRepository.Create(user);
 
         // Envio de email de ativação
-        var activationLink = $"https://localhost:7104/api/User/activate/{user.Id}";
+        var activationLink = $"https://localhost:7104/api/User/activate/{nUser}";
         await _emailService.SendEmail(user.Email, "Assunto: Ativação de Conta \n", $"Clique no link para ativar sua conta:\n {activationLink}");
         return await _userRepository.Create(user);
     }

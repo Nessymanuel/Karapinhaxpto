@@ -11,5 +11,5 @@ public class ServiceAppointmentAddDTO
     public int AppointmentId { get; set; }
     public int CategoryId { get; set; }
     public DateTime Date { get; set; }
-    public TimeOnly Time { get; set; }
+    public String Time { get; set; }
 }

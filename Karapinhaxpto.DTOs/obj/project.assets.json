@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.DTOs\\Karapinhaxpto.DTOs.csproj",
+      "projectUniqueName": "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.DTOs\\Karapinhaxpto.DTOs.csproj",
       "projectName": "Karapinhaxpto.DTOs",
-      "projectPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.DTOs\\Karapinhaxpto.DTOs.csproj",
+      "projectPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.DTOs\\Karapinhaxpto.DTOs.csproj",
       "packagesPath": "C:\\Users\\makemoney02\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.DTOs\\obj\\",
+      "outputPath": "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.DTOs\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\makemoney02\\AppData\\Roaming\\NuGet\\NuGet.Config",

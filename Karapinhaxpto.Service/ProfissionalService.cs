@@ -20,12 +20,12 @@ public class ProfissionalService : IProfissionalService
     {
         var profissional = new Profissional
         {
-            Description = profissionalAddDTO.Description,
+            Name = profissionalAddDTO.Name,
             Email = profissionalAddDTO.Email,
             Phone = profissionalAddDTO.Phone,
             Photo = profissionalAddDTO.Photo,
             Id_Card = profissionalAddDTO.Id_Card,
-            Category_ID = profissionalAddDTO.Category_ID
+            Service_ID = profissionalAddDTO.Service_ID
     };
         return await _profissionalRepository.Create(profissional);
     }
@@ -59,12 +59,12 @@ public class ProfissionalService : IProfissionalService
         if (profissional != null)
         {
 
-            profissional.Description = profissionalUpdateDTO.Description;
+            profissional.Name = profissionalUpdateDTO.Name;
             profissional.Phone = profissionalUpdateDTO.Phone;
             profissional.Photo = profissionalUpdateDTO.Photo;
             profissional.Email = profissionalUpdateDTO.Email;
             profissional.Id_Card = profissionalUpdateDTO.Id_Card;
-            profissional.Category_ID = profissionalUpdateDTO.Category_ID;
+            profissional.Service_ID = profissionalUpdateDTO.Service_ID;
 
             return await _profissionalRepository.Update(profissional);
         }

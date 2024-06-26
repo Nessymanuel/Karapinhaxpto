@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4Eegh6rFxPt+hsSPKfJzyxF3DAn2F4zGwi74EVRYfIx+X9tq5Gypp9dgXJOne05lqO00Xfz7LYJe21OITjw5OQ==",
+  "dgSpecHash": "ESxt3TmU7hXAN8gnbuF9IS2omL9JZSzfC8DbYrIfuHT6jbK4JBLcbEta0xqxai0FZxrF2RaHpmaD+JAILsclNA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.Model\\Karapinhaxpto.Model.csproj",
+  "projectFilePath": "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.Model\\Karapinhaxpto.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\makemoney02\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512"
   ],

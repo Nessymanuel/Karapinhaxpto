@@ -1,4 +1,5 @@
 ﻿using Karapinhaxpto.DTOs;
+using Karapinhaxpto.Service;
 using Karapinhaxpto.Shared.IService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -36,9 +37,21 @@ public class AppointmentController : ControllerBase
     {
         return Ok(await _appointmentService.Create(appointmentAddDTO));
     }
-    [HttpPut]
-    public async Task<IActionResult> UpdateCategory(AppointmentUpdateDTO appointmentUpdateDTO)
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateAppointment(int id, [FromBody] AppointmentUpdateDTO appointmentUpdateDTO)
     {
-        return Ok(await _appointmentService.Update(appointmentUpdateDTO));
+        if (id != appointmentUpdateDTO.Id)
+        {
+            return BadRequest("O ID fornecido na URL não coincide com o ID no corpo da solicitação.");
+        }
+
+        var result = await _appointmentService.Update(appointmentUpdateDTO);
+        if (result)
+        {
+            return NoContent();
+        }
+
+        return NotFound();
     }
 }

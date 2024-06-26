@@ -1,4 +1,5 @@
 ﻿using Karapinhaxpto.DTOs;
+using Karapinhaxpto.Service;
 using Karapinhaxpto.Shared.IService;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -51,10 +52,21 @@ namespace Karapinhaxpto.Api.Controllers
             return Ok(await _serviceService.Create(serviceAddDTO));
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateService(ServiceUpdateDTO serviceUpdateDTO)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateService(int id, [FromBody] ServiceUpdateDTO serviceUpdateDTO)
         {
-            return Ok(await _serviceService.Update(serviceUpdateDTO));
+            if (id != serviceUpdateDTO.Id)
+            {
+                return BadRequest("O ID fornecido na URL não coincide com o ID no corpo da solicitação.");
+            }
+
+            var result = await _serviceService.Update(serviceUpdateDTO);
+            if (result)
+            {
+                return NoContent();
+            }
+
+            return NotFound();
         }
     }
 }

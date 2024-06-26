@@ -35,10 +35,16 @@ namespace Karapinhaxpto.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateServiceAppointment(ServiceAppointmentAddDTO serviceAppointmentAddDTO)
+        public async Task<IActionResult> CreateServiceAppointment([FromBody] ServiceAppointmentAddDTO serviceAppointmentAddDTO)
         {
+            // Conversão do campo time para System.TimeOnly
+            //var timeOnly = new TimeOnly(serviceAppointmentAddDTO.Time.Hour, serviceAppointmentAddDTO.Time.Minute);
+            //serviceAppointmentAddDTO.Time = timeOnly;
+
             return Ok(await _serviceAppointmentService.Create(serviceAppointmentAddDTO));
         }
+
+
 
         [HttpPut]
         public async Task<IActionResult> UpdateServiceAppointment(ServiceAppointmentUpdateDTO serviceAppointmentUpdateDTO)

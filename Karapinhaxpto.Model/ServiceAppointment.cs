@@ -20,5 +20,5 @@ public class ServiceAppointment
     public int CategoryId { get; set; }
     public Category? category { get; set; } 
     public DateTime Date {  get; set; }
-    public TimeOnly Time { get; set; }
+    public String Time { get; set; }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sp5sEzRZVkVp7H6Lm+uZX4JBT1VZ8uQciFCjjit+CX953RTmnr8LUDMJG46IHeGY4I/fu/5U4tCCNDtCEWoigA==",
+  "dgSpecHash": "DuPsVRV/g9uatm14ObWhlKG8g5fMUpIyidTJ77upjlRmHu08A6vcImD/3IAfSc4T95AnFKWvqzGcjHCiB33OtA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\makemoney02\\Desktop\\Dev\\C#\\Karapinhaxpto.DAL\\Karapinhaxpto.DAL.csproj",
+  "projectFilePath": "C:\\Users\\makemoney02\\Desktop\\Dev\\Karapinhaxpto-20200780\\C#\\Karapinhaxpto.DAL\\Karapinhaxpto.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\makemoney02\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\makemoney02\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

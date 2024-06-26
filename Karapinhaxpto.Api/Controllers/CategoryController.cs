@@ -36,9 +36,23 @@ public class CategoryController : ControllerBase
     {
         return Ok(await _categoryService.Create(categoryAddDTO));
     }
-    [HttpPut]
-    public async Task<IActionResult> UpdateCategory(CategoryUpdateDTO categoryUpdateDTO)
+   
+
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateCategory(int id, [FromBody] CategoryUpdateDTO categoryUpdateDTO)
     {
-        return Ok(await _categoryService.Update(categoryUpdateDTO));
+        if (id != categoryUpdateDTO.Id)
+        {
+            return BadRequest("O ID fornecido na URL não coincide com o ID no corpo da solicitação.");
+        }
+
+        var result = await _categoryService.Update(categoryUpdateDTO);
+        if (result)
+        {
+            return NoContent();
+        }
+
+        return NotFound();
     }
 }
