@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { api } from '../../server/api';
 import 'tailwindcss/tailwind.css';
 
@@ -8,31 +8,16 @@ interface Category {
 }
 
 interface CategoryListProps {
+    categories: Category[];
     onEdit: (id: number, description: string) => void;
-    searchQuery: string;
 }
 
-export const CategoryList: React.FC<CategoryListProps> = ({ onEdit, searchQuery }) => {
-    const [categories, setCategories] = useState<Category[]>([]);
-
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const response = await api.get('https://localhost:7104/api/Category');
-                setCategories(response.data);
-            } catch (error) {
-                console.error('Erro ao buscar categorias:', error);
-            }
-        };
-
-        fetchCategories();
-    }, []);
+export const CategoryList: React.FC<CategoryListProps> = ({ categories, onEdit }) => {
 
     const handleDelete = async (id: number) => {
         if (window.confirm('Tem certeza que deseja excluir esta categoria?')) {
             try {
                 await api.delete(`https://localhost:7104/api/Category/${id}`);
-                setCategories(prevCategories => prevCategories.filter(category => category.id !== id));
                 console.log('Categoria excluída com sucesso!');
             } catch (error) {
                 console.error('Erro ao excluir categoria:', error);

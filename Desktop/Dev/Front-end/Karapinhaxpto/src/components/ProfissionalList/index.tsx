@@ -5,18 +5,23 @@ import 'tailwindcss/tailwind.css';
 interface Profissional {
     id: number;
     name: string;
-    category_ID: number;
+    service_ID: number;
     email: string;
     photo: string;
     phone: string;
     id_Card: string;
 }
 
+interface Service {
+    id: number;
+    description: string;
+}
+
 interface ProfissionalListProps {
     onEdit: (
         id: number,
         name: string,
-        category_ID: number,
+        service_ID: number,
         email: string,
         photo: string,
         phone: string,
@@ -27,6 +32,7 @@ interface ProfissionalListProps {
 
 export const ProfissionalList: React.FC<ProfissionalListProps> = ({ onEdit, searchQuery }) => {
     const [profissionals, setProfissionals] = useState<Profissional[]>([]);
+    const [services, setServices] = useState<Service[]>([]);
 
     useEffect(() => {
         const fetchProfissionals = async () => {
@@ -36,7 +42,7 @@ export const ProfissionalList: React.FC<ProfissionalListProps> = ({ onEdit, sear
                     const formattedProfissionals = response.data.map((profissional: any) => ({
                         id: profissional.id,
                         name: profissional.name,
-                        category_ID: profissional.category_ID,
+                        service_ID: profissional.service_ID,
                         email: profissional.email,
                         photo: profissional.photo,
                         phone: profissional.phone,
@@ -51,7 +57,17 @@ export const ProfissionalList: React.FC<ProfissionalListProps> = ({ onEdit, sear
             }
         };
 
+        const fetchServices = async () => {
+            try {
+                const response = await api.get('https://localhost:7104/api/Service');
+                setServices(response.data);
+            } catch (error) {
+                console.error('Erro ao buscar serviços:', error);
+            }
+        };
+
         fetchProfissionals();
+        fetchServices();
     }, []);
 
     const handleDelete = async (id: number) => {
@@ -66,6 +82,11 @@ export const ProfissionalList: React.FC<ProfissionalListProps> = ({ onEdit, sear
         }
     };
 
+    const getServiceDescription = (service_ID: number) => {
+        const service = services.find(service => service.id === service_ID);
+        return service ? service.description : 'Serviço não encontrado';
+    };
+
     const filteredProfissionals = profissionals.filter(profissional =>
         profissional.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -78,7 +99,7 @@ export const ProfissionalList: React.FC<ProfissionalListProps> = ({ onEdit, sear
                     <li key={profissional.id} className="flex items-center justify-between py-2 border-b border-gray-300">
                         <div>
                             <h3 className="text-lg">{profissional.name}</h3>
-                            <p className="text-gray-600">Categoria ID: {profissional.category_ID}</p>
+                            <p className="text-gray-600">Serviço: {getServiceDescription(profissional.service_ID)}</p>
                             <p className="text-gray-600">E-mail: {profissional.email}</p>
                             <p className="text-gray-600">Telefone: {profissional.phone}</p>
                             <p className="text-gray-600">ID Card: {profissional.id_Card}</p>
@@ -90,7 +111,7 @@ export const ProfissionalList: React.FC<ProfissionalListProps> = ({ onEdit, sear
                                     onEdit(
                                         profissional.id,
                                         profissional.name,
-                                        profissional.category_ID,
+                                        profissional.service_ID,
                                         profissional.email,
                                         profissional.photo,
                                         profissional.phone,

@@ -5,7 +5,7 @@ import 'tailwindcss/tailwind.css';
 interface EditProfissionalProps {
     id: number;
     initialName: string;
-    initialCategoryID: number;
+    initialServiceID: number;
     initialEmail: string;
     initialPhoto: string;
     initialPhone: string;
@@ -13,7 +13,7 @@ interface EditProfissionalProps {
     onSaveSuccess: (updatedProfissional: {
         id: number;
         name: string;
-        category_ID: number;
+        service_ID: number;
         email: string;
         photo: string;
         phone: string;
@@ -24,7 +24,7 @@ interface EditProfissionalProps {
 export const EditProfissionalForm: React.FC<EditProfissionalProps> = ({
     id,
     initialName,
-    initialCategoryID,
+    initialServiceID,
     initialEmail,
     initialPhoto,
     initialPhone,
@@ -32,7 +32,7 @@ export const EditProfissionalForm: React.FC<EditProfissionalProps> = ({
     onSaveSuccess,
 }) => {
     const [name, setName] = useState(initialName);
-    const [categoryID, setCategoryID] = useState(initialCategoryID);
+    const [serviceID, setServiceID] = useState(initialServiceID);
     const [email, setEmail] = useState(initialEmail);
     const [photo, setPhoto] = useState(initialPhoto);
     const [phone, setPhone] = useState(initialPhone);
@@ -43,7 +43,7 @@ export const EditProfissionalForm: React.FC<EditProfissionalProps> = ({
     };
 
     const handleChangeCategoryID = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setCategoryID(parseInt(e.target.value, 10));
+        setServiceID(parseInt(e.target.value, 10));
     };
 
     const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,7 +69,7 @@ export const EditProfissionalForm: React.FC<EditProfissionalProps> = ({
             const updatedProfissional = {
                 id,
                 name,
-                category_ID: categoryID,
+                service_ID: serviceID,
                 email,
                 photo,
                 phone,
@@ -96,7 +96,7 @@ export const EditProfissionalForm: React.FC<EditProfissionalProps> = ({
             />
             <input
                 type="number"
-                value={categoryID}
+                value={serviceID}
                 onChange={handleChangeCategoryID}
                 className="w-full px-3 py-2 border border-[#CCCCCC] rounded-md focus:outline-none mb-2"
                 placeholder="ID do Serviço"

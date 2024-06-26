@@ -7,7 +7,12 @@ interface Service {
     description: string;
     price: number;
     category_ID: number;
-    category: string | null; // categoria é opcional, então pode ser string ou null
+    category: string;
+}
+
+interface Category {
+    id: number;
+    description: string;
 }
 
 interface ServiceListProps {
@@ -17,19 +22,19 @@ interface ServiceListProps {
 
 export const ServiceList: React.FC<ServiceListProps> = ({ onEdit, searchQuery }) => {
     const [services, setServices] = useState<Service[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
 
     useEffect(() => {
         const fetchServices = async () => {
             try {
                 const response = await api.get('https://localhost:7104/api/Service');
-                // Verifica se response.data é um array antes de setar services
                 if (Array.isArray(response.data)) {
                     const formattedServices = response.data.map((service: any) => ({
                         id: service.id,
                         description: service.description,
                         price: service.price,
                         category_ID: service.category_ID,
-                        category: service.category || null // categoria pode ser null se não estiver presente
+                        category: service.category,
                     }));
                     setServices(formattedServices);
                 } else {
@@ -40,7 +45,21 @@ export const ServiceList: React.FC<ServiceListProps> = ({ onEdit, searchQuery })
             }
         };
 
+        const fetchCategories = async () => {
+            try {
+                const response = await api.get('https://localhost:7104/api/Category');
+                if (Array.isArray(response.data)) {
+                    setCategories(response.data);
+                } else {
+                    console.error('Formato de dados inválido:', response.data);
+                }
+            } catch (error) {
+                console.error('Erro ao buscar categorias:', error);
+            }
+        };
+
         fetchServices();
+        fetchCategories();
     }, []);
 
     const handleDelete = async (id: number) => {
@@ -55,6 +74,11 @@ export const ServiceList: React.FC<ServiceListProps> = ({ onEdit, searchQuery })
         }
     };
 
+    const getCategoryDescription = (category_ID: number) => {
+        const category = categories.find(category => category.id === category_ID);
+        return category ? category.description : 'Categoria não encontrada';
+    };
+
     const filteredServices = services.filter(service =>
         service.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -67,8 +91,8 @@ export const ServiceList: React.FC<ServiceListProps> = ({ onEdit, searchQuery })
                     <li key={service.id} className="flex items-center justify-between py-2 border-b border-gray-300">
                         <div>
                             <h3 className="text-lg">{service.description}</h3>
-                            <p className="text-gray-600">Preço:  {service.price.toFixed(2)} kz</p>
-                            <p className="text-gray-600">Categoria: {service.category || 'N/A'}</p>
+                            <p className="text-gray-600">Preço: {service.price.toFixed(2)} kz</p>
+                            <p className="text-gray-600">Categoria: {getCategoryDescription(service.category_ID)}</p>
                         </div>
                         <div>
                             <button
@@ -90,4 +114,3 @@ export const ServiceList: React.FC<ServiceListProps> = ({ onEdit, searchQuery })
         </div>
     );
 };
-

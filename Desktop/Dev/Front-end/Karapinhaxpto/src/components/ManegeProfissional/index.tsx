@@ -47,12 +47,25 @@ const ManageProfessional: React.FC = () => {
         setAddingProfessional(false);
     };
 
+    const handleSearchQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(e.target.value);
+    };
+
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-3xl font-semibold mb-4">Gerenciamento de Profissionais</h1>
 
             <div className="mb-8">
                 <h2 className="text-xl font-semibold mb-2">Profissionais</h2>
+                <div className="mb-4">
+                    <input
+                        type="text"
+                        value={searchQuery}
+                        onChange={handleSearchQueryChange}
+                        placeholder="Buscar profissionais..."
+                        className="w-full px-3 py-2 border border-[#CCCCCC] rounded-md focus:outline-none"
+                    />
+                </div>
                 <ProfissionalList onEdit={handleEditProfessional} searchQuery={searchQuery} />
                 <button
                     onClick={handleAddProfessional}
@@ -64,7 +77,7 @@ const ManageProfessional: React.FC = () => {
                     <EditProfissionalForm
                         id={editingProfessional.id}
                         initialName={editingProfessional.name}
-                        initialCategoryID={editingProfessional.service_ID}
+                        initialServiceID={editingProfessional.service_ID}
                         initialEmail={editingProfessional.email}
                         initialPhoto={editingProfessional.photo}
                         initialPhone={editingProfessional.phone}

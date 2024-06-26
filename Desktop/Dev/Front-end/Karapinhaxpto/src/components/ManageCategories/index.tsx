@@ -44,7 +44,10 @@ export const ManageCategories: React.FC = () => {
         setSearchQuery(e.target.value);
     };
 
-    
+    // Filtrar as categorias com base na query de busca
+    const filteredCategories = categories.filter(category =>
+        category.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
         <div className="container mx-auto p-4">
@@ -58,7 +61,7 @@ export const ManageCategories: React.FC = () => {
                     className="w-full px-3 py-2 border border-[#CCCCCC] rounded-md focus:outline-none"
                 />
             </div>
-            <CategoryList onEdit={handleEdit} searchQuery={searchQuery} />
+            <CategoryList categories={filteredCategories} onEdit={handleEdit} />
             {editingCategory && (
                 <div className="mb-4">
                     <EditCategoryForm
@@ -71,7 +74,5 @@ export const ManageCategories: React.FC = () => {
         </div>
     );
 };
-
-
 
 
