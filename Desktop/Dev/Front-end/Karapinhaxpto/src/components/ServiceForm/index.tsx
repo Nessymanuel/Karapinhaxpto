@@ -13,9 +13,9 @@ interface Category {
 
 export const ServiceForm: React.FC<ServiceFormProps> = ({ onClose }) => {
     const [description, setDescription] = useState('');
-    const [price, setPrice] = useState<string>(''); // Price como string para facilitar a validação
-    const [categoryId, setCategoryId] = useState<number | ''>(''); // State para armazenar o ID da categoria selecionada
-    const [categories, setCategories] = useState<Category[]>([]); // State para armazenar as categorias disponíveis
+    const [price, setPrice] = useState<string>(''); 
+    const [categoryId, setCategoryId] = useState<number | ''>(''); 
+    const [categories, setCategories] = useState<Category[]>([]); 
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -59,7 +59,7 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({ onClose }) => {
             const newService = {
                 description,
                 price: parsedPrice,
-                category_ID: categoryId // Incluímos o category_ID no objeto newService
+                category_ID: categoryId 
             };
 
             await api.post('https://localhost:7104/api/Service', newService);

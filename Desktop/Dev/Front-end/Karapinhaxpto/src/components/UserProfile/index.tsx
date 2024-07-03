@@ -21,3 +21,4 @@ export const UserProfile: React.FC<UserProfileProps> = ({ userData }) => {
         </div>
     );
 };
+

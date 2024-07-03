@@ -31,6 +31,7 @@ export function Login() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                
             });
             console.log(response.data);
             
@@ -38,6 +39,7 @@ export function Login() {
                 setAlertMessage("Utilizador autenticado com sucesso.");
                 login(response.data); // Chama a função login para salvar no localStorage
 
+                
                 if (formData.email === "gracieth000@gmail.com") {  
                     console.log("Redirecionando para AdminDashboard");
                     navigate('/AdminDashboard');   
