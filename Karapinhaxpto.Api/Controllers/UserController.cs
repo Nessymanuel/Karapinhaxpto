@@ -94,5 +94,34 @@ namespace Karapinhaxpto.Api.Controllers
             
             return Ok(new { message = "Conta ativada com sucesso!" });
         }
+
+        [HttpGet("details/{id}")]
+        public async Task<IActionResult> UserDetails(int id)
+        {
+            var user = await _userService.GetById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var userDetails = new
+            {
+                user.Id,
+                user.Activate,
+                user.Email,
+                user.Phone,
+                user.Username,
+                user.FullName,
+                user.Photo,
+                user.Password,
+                user.Status,
+                user.ID_Card,
+                user.Profile,
+                user.ProfileId,
+
+            };
+
+            return Ok(userDetails);
+        }
     }
 }
