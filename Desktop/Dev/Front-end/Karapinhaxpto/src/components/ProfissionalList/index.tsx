@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../../server/api';
 import 'tailwindcss/tailwind.css';
+import { HorarioModal } from '../ScheduleModal';
 
 interface Profissional {
     id: number;
@@ -33,6 +34,7 @@ interface ProfissionalListProps {
 export const ProfissionalList: React.FC<ProfissionalListProps> = ({ onEdit, searchQuery }) => {
     const [profissionals, setProfissionals] = useState<Profissional[]>([]);
     const [services, setServices] = useState<Service[]>([]);
+    const [selectedProfissional, setSelectedProfissional] = useState<Profissional | null>(null);
 
     useEffect(() => {
         const fetchProfissionals = async () => {
@@ -122,15 +124,27 @@ export const ProfissionalList: React.FC<ProfissionalListProps> = ({ onEdit, sear
                                 Editar
                             </button>
                             <button
-                                className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded"
+                                className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded mr-2"
                                 onClick={() => handleDelete(profissional.id)}
                             >
                                 Excluir
+                            </button>
+                            <button
+                                className="bg-slate-700 text-white font-bold py-1 px-3 rounded"
+                                onClick={() => setSelectedProfissional(profissional)}
+                            >
+                                Horário
                             </button>
                         </div>
                     </li>
                 ))}
             </ul>
+            {selectedProfissional && (
+                <HorarioModal
+                    profissional={selectedProfissional}
+                    onClose={() => setSelectedProfissional(null)}
+                />
+            )}
         </div>
     );
 };

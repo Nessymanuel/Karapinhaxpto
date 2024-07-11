@@ -7,6 +7,9 @@ import { Dashboard } from '../screens/Dashboard/index.tsx'
 import { SignUp } from '../screens/SignUp'
 import { Form } from '../components/Form'
 import { AdminDashboard } from '../screens/AdminDashboard/'
+import  {AdmDashboard}  from '../screens/AdmDashboard/'
+import { ScreenActive } from '../screens/ScreenActive/index.tsx'
+import { ScreenBlock } from '../screens/ScreenBlock/index.tsx'
 
 
 
@@ -22,6 +25,9 @@ export function MyRoutes() {
                 <Route path='/Form' element={<Form/>} />
                 <Route path='/Dashboard' element={<Dashboard/>} />
                 <Route path='/AdminDashboard' element={<AdminDashboard/>} />
+                <Route path='/AdmDashboard' element={<AdmDashboard/>} />
+                <Route path='/ScreenActive' element={<ScreenActive/>} />
+                <Route path='/ScreenBlock' element={<ScreenBlock/>} />
             </Routes>
         </Router>
     );

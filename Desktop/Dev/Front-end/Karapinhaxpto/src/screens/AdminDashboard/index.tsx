@@ -12,8 +12,6 @@ export function AdminDashboard() {
     const [isServiceFormOpen, setIsServiceFormOpen] = useState(false);
     const [isProfissionalFormOpen, setIsProfissionalFormOpen] = useState(false);
 
-    
-
     const renderContent = () => {
         switch (activeSection) {
             case 'profissionais':
@@ -68,13 +66,16 @@ export function AdminDashboard() {
                 {/* Coluna do UserProfile */}
                 <div className="md:w-1/6 lg:w-1/5">
                     <UserProfile
-                        userData={{
+                        user={{
                             username: 'Nome do Administrador',
                             ID_Card: '123456789',
                             fullName: 'Gracieth',
                             email: 'admin@example.com',
                             phone: '123-456-7890',
                             photo: 'https://via.placeholder.com/150',
+                        }}
+                        logout={() => {
+                            console.log("Logout function called");
                         }}
                     />
                 </div>
@@ -109,7 +110,6 @@ export function AdminDashboard() {
                         </button>
                     </div>
 
-                    {/* Conteúdo dinâmico com base na seção ativa */}
                     <div className="bg-white rounded-lg shadow-md p-6">
                         {renderContent()}
                     </div>

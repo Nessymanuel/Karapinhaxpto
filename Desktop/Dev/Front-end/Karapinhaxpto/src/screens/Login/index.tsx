@@ -4,7 +4,7 @@ import 'tailwindcss/tailwind.css';
 import { useNavigate } from "react-router-dom";
 import { api } from "../../server/api";
 import { useAuth } from "../../context/AuthContext";
-
+ 
 export function Login() {
     const [formData, setFormData] = useState({
         email: "",
@@ -31,24 +31,46 @@ export function Login() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                
             });
-            console.log(response.data);
-            
+
             if (response.data.success) {
                 setAlertMessage("Utilizador autenticado com sucesso.");
-                login(response.data); // Chama a função login para salvar no localStorage
+
+                // Buscar dados do usuário usando o email
+                const userResponse = await api.get(`https://localhost:7104/api/User/details/${(formData.email)}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                const userData = userResponse.data;
+                
+                // Armazenar os dados do usuário no local storage
+                login(userData);
 
                 
-                if (formData.email === "gracieth000@gmail.com") {  
+                // Redirecionar com base nos dados do usuário
+                if (userData.profileId === 3  ) {
                     console.log("Redirecionando para AdminDashboard");
-                    navigate('/AdminDashboard');   
-                } else {
+                    if(!(userData.status)){
+                        navigate('/ScreenBlock');
+                        
+                    } else{
+                        navigate('/AdminDashboard');
+                    }
+                } else if (userData.profileId === 2 ) {
+                    console.log("Redirecionando para AdmDashboard");
                     
+                    navigate('/AdmDashboard');
+                } else {
                     console.log("Redirecionando para Dashboard");
-                    navigate('/Dashboard'); 
+                    if((  !userData.status)){
+                        navigate('/ScreenBlock');
+                        
+                    } else{
+                        navigate('/Dashboard');
+                    }
                 }
-                
             } else {
                 setAlertMessage("Credenciais inválidas. Crie uma conta para acessar.");
             }

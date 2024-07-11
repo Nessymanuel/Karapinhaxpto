@@ -44,6 +44,7 @@ export function AppointmentForm() {
         api.get('https://localhost:7104/api/Profissional')
             .then(response => {
                 setProfissionals(response.data);
+                console.log(response.data);
             })
             .catch(error => {
                 console.error('Erro ao buscar profissionais!', error);
@@ -57,13 +58,13 @@ export function AppointmentForm() {
             [name]: value,
         }));
         const selectCategory: any = categories.find((category: any) => category.description == e.target.value)
-        const selectProfissional: any = profissionals.filter((profissional: any) => profissional.category_ID == selectCategory.id)
+        const selectProfissional: any = profissionals.filter((profissional: any) => profissional.service_ID == selectCategory.id)
 
 
         if(!selectCategory){
             return ""
         }else if(selectCategory){
-            const filtered = services.filter((service: any) => service.category_ID === selectCategory.id);
+            const filtered = services.filter((service: any) => service.service_ID === selectCategory.id);
             setFilteredServices(filtered);
             setFilteredProfissional(selectProfissional)
         }

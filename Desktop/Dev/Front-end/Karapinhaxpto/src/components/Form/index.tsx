@@ -1,9 +1,7 @@
-// src/components/Form.tsx
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
 import 'tailwindcss/tailwind.css';
 import { useNavigate } from 'react-router-dom';
-// import { useAuth } from '../../Context/AuthContext'; 
 
 export interface User {
   fullName: string;
@@ -19,7 +17,12 @@ export interface User {
   confirmPassword: string;
 }
 
-export function Form() {
+interface FormProps {
+  profileId: number;
+  onClose: () => void; // Função para fechar o componente
+}
+
+export function Form({ profileId, onClose }: FormProps) {
   const [User, setUser] = useState<User>({
     fullName: "",
     password: "",
@@ -28,13 +31,12 @@ export function Form() {
     photo: "",
     iD_Card: "",
     username: "",
-    profileId: 1,
+    profileId: profileId, 
     activate: false,
     status: false,
     confirmPassword: "",
   });
 
-  // const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +54,6 @@ export function Form() {
       alert("As senhas não coincidem.");
       return;
     }
-    
 
     try {
       const dataToSend = {
@@ -76,12 +77,9 @@ export function Form() {
       console.log(response.data);
       alert("Usuário registrado com sucesso!");
 
-      // Chame a função de login após o registro
-      // login(response.data);
+      onClose(); // Fechar o formulário após o registro
 
-      // Redirecionar para a dashboard depois de efetuar o registro
       navigate('/Dashboard');
-
     } catch (error) {
       console.error("Erro ao registrar usuário:", error);
       if (axios.isAxiosError(error)) {
