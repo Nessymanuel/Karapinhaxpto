@@ -11,7 +11,7 @@ interface User {
     email: string;
     profileId: number;
     activate: boolean;
-    blocked: boolean;
+    Status: boolean;
 }
 
 export function AdmDashboard() {
@@ -43,7 +43,7 @@ export function AdmDashboard() {
                 );
                 setUsers(updatedUsers);
                 console.log(`Conta do usuário ${userId} ativada.`);
-                alert("oi")
+                
             } else {
                 console.error(`Erro ao ativar conta do usuário ${userId}. Status: ${response.status}`);
             }
@@ -58,7 +58,7 @@ export function AdmDashboard() {
         try {
             
             const updatedUsers = users.map(user =>
-                user.id === userId ? { ...user, blocked: !user.blocked } : user
+                user.id === userId ? { ...user, Status: !user.Status } : user
             );
             setUsers(updatedUsers);
             console.log(`Conta do usuário ${userId} bloqueada/desbloqueada.`);
@@ -67,12 +67,6 @@ export function AdmDashboard() {
         }
     };
 
-    // const renderBlockedScreen = () => (
-    //     <div className="container mx-auto mt-8 text-center">
-    //         <h1 className="text-3xl font-bold mb-4">Conta Bloqueada</h1>
-    //         <p className="text-gray-600">Consulte o administrador para mais informações.</p>
-    //     </div>
-    // );
 
     const renderUsersList = () => {
         return (
@@ -100,10 +94,10 @@ export function AdmDashboard() {
                                     {user.activate ? 'Conta Ativada' : 'Ativar Conta'}
                                 </button>
                                 <button
-                                    className={`py-1 px-3 rounded ${user.blocked ? 'bg-red-500 text-white' : 'bg-yellow-500 text-black'}`}
+                                    className={`py-1 px-3 rounded ${user.Status ? 'bg-red-500 text-white' : 'bg-yellow-500 text-black'}`}
                                     onClick={() => handleToggleBlock(user.id)}
                                 >
-                                    {user.blocked ? 'Desbloquear' : 'Bloquear'}
+                                    {user.Status ? 'Desbloquear' : 'Bloquear'}
                                 </button>
                             </div>
                         </li>
@@ -169,7 +163,6 @@ export function AdmDashboard() {
                 </div>
             </div>
 
-            {/* {isAdminFormOpen && <AdminManagement onClose={() => setIsAdminFormOpen(false)} />}       */}
         </div>
     );
 }

@@ -31,7 +31,7 @@ export function Form({ profileId, onClose }: FormProps) {
     photo: "",
     iD_Card: "",
     username: "",
-    profileId: profileId, 
+    profileId: profileId, // Definindo o profileId do props
     activate: false,
     status: false,
     confirmPassword: "",
@@ -64,7 +64,7 @@ export function Form({ profileId, onClose }: FormProps) {
         photo: User.photo,
         iD_Card: User.iD_Card,
         username: User.username,
-        profileId: User.profileId,
+        profileId: User.profileId, 
         activate: User.activate,
         status: User.status
       };
@@ -81,11 +81,12 @@ export function Form({ profileId, onClose }: FormProps) {
 
       navigate('/Dashboard');
     } catch (error) {
+      
       console.error("Erro ao registrar usuário:", error);
       if (axios.isAxiosError(error)) {
-        console.error('Resposta da API:', error.response);
+        console.error('Resposta da API:', error.response?.data);
         if (error.response) {
-          alert("Adicione um outro email, esse já foi usado");
+          console.log("Adicione um outro email, esse já foi usado");
         } else {
           alert('Erro ao conectar ao servidor. Verifique sua conexão ou tente novamente mais tarde.');
         }
@@ -99,7 +100,7 @@ export function Form({ profileId, onClose }: FormProps) {
     <>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="fullName" className="block text-gray-700 font-regular mb-1">Nome completo:</label>
+          <label htmlFor="fullName" className="block text-gray-700 font-bold mb-1">Nome completo:</label>
           <input
             type="text"
             id="fullName"
@@ -112,7 +113,7 @@ export function Form({ profileId, onClose }: FormProps) {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700 font-regular mb-1">Endereço de email:</label>
+          <label htmlFor="email" className="block text-gray-700 font-bold mb-1">Endereço de email:</label>
           <input
             type="email"
             id="email"
@@ -125,7 +126,7 @@ export function Form({ profileId, onClose }: FormProps) {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="phone" className="block text-gray-700 font-regular mb-1">Telemóvel:</label>
+          <label htmlFor="phone" className="block text-gray-700 font-bold mb-1">Telemóvel:</label>
           <input
             type="tel"
             id="phone"
@@ -138,7 +139,7 @@ export function Form({ profileId, onClose }: FormProps) {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="photo" className="block text-gray-700 font-regular mb-1">Foto (URL):</label>
+          <label htmlFor="photo" className="block text-gray-700 font-bold mb-1">Foto (URL):</label>
           <input
             type="text"
             id="photo"
@@ -150,7 +151,7 @@ export function Form({ profileId, onClose }: FormProps) {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="iD_Card" className="block text-gray-700 font-regular mb-1">Bilhete de Identidade:</label>
+          <label htmlFor="iD_Card" className="block text-gray-700 font-bold mb-1">Bilhete de Identidade:</label>
           <input
             type="text"
             id="iD_Card"
@@ -163,7 +164,7 @@ export function Form({ profileId, onClose }: FormProps) {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="username" className="block text-gray-700 font-regular mb-1">Username:</label>
+          <label htmlFor="username" className="block text-gray-700 font-bold mb-1">Username:</label>
           <input
             type="text"
             id="username"
@@ -176,7 +177,7 @@ export function Form({ profileId, onClose }: FormProps) {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700 font-regular mb-1">Password:</label>
+          <label htmlFor="password" className="block text-gray-700 font-bold mb-1">Password:</label>
           <input
             type="password"
             id="password"
@@ -189,7 +190,7 @@ export function Form({ profileId, onClose }: FormProps) {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="confirmPassword" className="block text-gray-700 font-regular mb-1">Confirmação da Password:</label>
+          <label htmlFor="confirmPassword" className="block text-gray-700 font-bold mb-1">Confirmação da Password:</label>
           <input
             type="password"
             id="confirmPassword"

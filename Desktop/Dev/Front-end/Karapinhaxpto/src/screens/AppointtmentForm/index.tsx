@@ -1,29 +1,58 @@
 import React, { FormEvent, useEffect, useState } from "react";
-import axios from 'axios';
 import { api } from "../../server/api";
 import 'tailwindcss/tailwind.css';
+
+// Definição de tipos para os dados retornados da API
+interface Category {
+    id: number;
+    description: string;
+}
+
+interface Service {
+    id: number;
+    description: string;
+    category_ID: number;
+}
+
+interface Profissional {
+    id: number;
+    name: string;
+    service: {
+        id: number;
+        description: string;
+    };
+}
+
+interface ProfissionalSchedule {
+    id: number;
+    profissionalId: number;
+    scheduleId: number;
+    schedule: {
+        id: number;
+        description: string;
+    };
+}
 
 export function AppointmentForm() {
     const [formData, setFormData] = useState({
         category: "",
-        service: "",
+        services: [] as Service[], 
         profissional: "",
         date: "",
-        time: ""
+        schedule: "" 
     });
-    
-    
 
-    const [categories, setCategories] = useState([]);
-    const [services, setServices] = useState([]);
-    const [filteredServices, setFilteredServices] = useState([]);
-    const [filteredProfissional, setFilteredProfissional] = useState([]);
-    const [appointmentData, setAppointmentData] = useState(null); 
-    const [profissionals, setProfissionals] = useState([]);
+    const [categories, setCategories] = useState<Category[]>([]);
+    const [services, setServices] = useState<Service[]>([]);
+    const [filteredServices, setFilteredServices] = useState<Service[]>([]);
+    const [filteredProfissionals, setFilteredProfissionals] = useState<Profissional[]>([]);
+    const [profissionals, setProfissionals] = useState<Profissional[]>([]);
+    const [profissionalSchedules, setProfissionalSchedules] = useState<ProfissionalSchedule[]>([]);
+    const [filteredSchedules, setFilteredSchedules] = useState<ProfissionalSchedule[]>([]);
 
     useEffect(() => {
         // Função para carregar categorias
-        api.get('https://localhost:7104/api/Category')
+        api.get<Category[]>('https://localhost:7104/api/Category')
             .then(response => {
                 setCategories(response.data);
             })
@@ -32,7 +61,7 @@ export function AppointmentForm() {
             });
 
         // Função para carregar serviços
-        api.get('https://localhost:7104/api/Service')
+        api.get<Service[]>('https://localhost:7104/api/Service')
             .then(response => {
                 setServices(response.data);
             })
@@ -41,38 +70,133 @@ export function AppointmentForm() {
             });
 
         // Função para carregar profissionais
-        api.get('https://localhost:7104/api/Profissional')
+        api.get<Profissional[]>('https://localhost:7104/api/Profissional')
             .then(response => {
                 setProfissionals(response.data);
-                console.log(response.data);
+
             })
             .catch(error => {
                 console.error('Erro ao buscar profissionais!', error);
             });
+
+        // Função para carregar profissionalSchedules
+        api.get<ProfissionalSchedule[]>('https://localhost:7104/api/ProfissionalSchedule')
+            .then(response => {
+                setProfissionalSchedules(response.data);
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.error('Erro ao buscar horários dos profissionais!', error);
+            });
     }, []);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const {name, value } = e.target;
-        setFormData(prevFormData => ({
-            ...prevFormData,
-            [name]: value,
-        }));
-        const selectCategory: any = categories.find((category: any) => category.description == e.target.value)
-        const selectProfissional: any = profissionals.filter((profissional: any) => profissional.service_ID == selectCategory.id)
+    const handleServiceClick = (service: Service) => {
+        const isSelected = formData.services.some(s => s.id === service.id);
 
+        if (isSelected) {
+            // Remove o serviço se já estiver selecionado
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                services: prevFormData.services.filter(s => s.id !== service.id),
+            }));
+        } else {
+            // Adiciona o serviço se ainda não estiver selecionado
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                services: [...prevFormData.services, service],
+            }));
+        }
+    };
 
-        if(!selectCategory){
-            return ""
-        }else if(selectCategory){
-            const filtered = services.filter((service: any) => service.service_ID === selectCategory.id);
-            setFilteredServices(filtered);
-            setFilteredProfissional(selectProfissional)
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const newAppointment = {
+            AppointmentId: 1, 
+            CategoryId: parseInt(formData.category), // ID da categoria selecionada
+            ServiceId: formData.services[0]?.id || 0, 
+            ProfissionalId: parseInt(formData.profissional), 
+            ScheduleId: parseInt(formData.schedule), 
+            Date: formData.date // Data selecionada no formato 'yyyy-MM-dd'
+        };
+    
+        console.log(newAppointment)
+        try {
+            const response = await api.post('https://localhost:7104/api/ServiceAppointment', newAppointment);
+            console.log('Marcação criada com sucesso:', response.data);
+        } catch (error) {
+            console.error('Erro ao criar marcação:', error);
         }
 
+        
     };
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log(formData);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+
+        if (name === "services") {
+            const selectElement = e.target as HTMLSelectElement;
+            const selectedServices = Array.from(selectElement.selectedOptions, option => {
+                const serviceId = parseInt(option.value);
+                //  ! serve para garantir que o serviço seja encontrado
+                return services.find(service => service.id === serviceId)!;
+            });
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                [name]: selectedServices,
+            }));
+        } else if (name === "schedule") {
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                schedule: value,
+            }));
+        } else {
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                [name]: value,
+            }));
+            if (name === "category") {
+                const selectedCategoryId = parseInt(value);
+                const filtered = services.filter(service => service.category_ID === selectedCategoryId);
+                setFilteredServices(filtered);
+            
+                const filteredProf = profissionals.filter(profissional =>
+                    filtered.some(service => service.id === profissional.service.id)
+                );
+                setFilteredProfissionals(filteredProf);
+            
+                setFormData(prevFormData => ({
+                    ...prevFormData,
+                    category: value,
+                }));
+            }
+            
+           else if (name === "profissional") {
+
+                const selectedProfissional = filteredProfissionals.find(profissional => String(profissional.id) === value);
+                console.log(selectedProfissional)
+                if (selectedProfissional) {
+                    const filteredSched = profissionalSchedules.filter(schedule =>
+                        schedule.profissionalId === selectedProfissional.id
+                    );
+                    setFilteredSchedules(filteredSched);
+                } else {
+                    setFilteredSchedules([]);
+                }
+            }
+        }
+    };
+
+    const renderServiceCards = () => {
+        return filteredServices.map(service => (
+            <div
+                key={service.id}
+                className={`border border-gray-300 p-4 rounded-md mb-2 cursor-pointer ${formData.services.some(s => s.id === service.id) ? 'bg-blue-100' : ''}`}
+                onClick={() => handleServiceClick(service)}
+            >
+                <h3 className="text-xs font-semibold">{service.description}</h3>
+            </div>
+        ));
     };
 
     return (
@@ -90,44 +214,51 @@ export function AppointmentForm() {
                             required
                         >
                             <option value="">Selecione uma categoria</option>
-                            {categories.map((category: any) => (
-                                <option key={category.id} value={category.description}>{category.description}</option>
+                            {categories.map(category => (
+                                <option key={category.id} value={category.id.toString()}>{category.description}</option>
                             ))}
                         </select>
+                        
+                    </div>
+
+                    {/* //cartões de seleção dos serviços */}
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-regular mb-2">Serviços/Tratamentos:</label>
+                        <div className="grid grid-cols-4 sm:grid-cols-6 gap-4">
+                            {renderServiceCards()}
+                        </div>
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="service" className="block text-gray-700 font-regular mb-2">Serviço/Tratamento:</label>
+                        <label htmlFor="profissional" className="block text-gray-700 font-regular mb-2">Profissional:</label>
                         <select
-                            id="service"
-                            name="service"
-                            value={formData.service}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-[#CCCCCC] rounded-md focus:outline-none"
-                            required
-                        >
-                            <option value="">Selecione um serviço</option>
-                            {
-                            filteredServices.map((service: any) => (
-                                <option key={service.id} value={service.description}>{service.description}</option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="professional" className="block text-gray-700 font-regular mb-2">Profissional:</label>
-                        <select
-                            id="professional"
-                            name="professional"
+                            id="profissional"
+                            name="profissional"
                             value={formData.profissional}
                             onChange={handleChange}
                             className="w-full px-3 py-2 border border-[#CCCCCC] rounded-md focus:outline-none"
                             required
                         >
                             <option value="">Selecione um profissional</option>
-                            {filteredProfissional.map((profissional: any) => (
-                                <option key={profissional.id} value={profissional.description}>{profissional.description}</option>
+                            {filteredProfissionals.map(profissional => (
+                                <option key={profissional.id} value={profissional.id.toString()}>{profissional.name}</option>
                             ))}
                         </select>
-                        
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="schedule" className="block text-gray-700 font-regular mb-2">Horário:</label>
+                        <select
+                            id="schedule"
+                            name="schedule"
+                            value={formData.schedule}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-[#CCCCCC] rounded-md focus:outline-none"
+                            required
+                        >
+                            <option value="">Selecione um horário</option>
+                            {filteredSchedules.map(schedule => (
+                                <option key={schedule.id} value={schedule.schedule.id.toString()}>{schedule.schedule.description}</option>
+                            ))}
+                        </select>
                     </div>
                     <div className="mb-4">
                         <label htmlFor="date" className="block text-gray-700 font-regular mb-2">Data:</label>
@@ -136,18 +267,6 @@ export function AppointmentForm() {
                             id="date"
                             name="date"
                             value={formData.date}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-[#CCCCCC] rounded-md focus:outline-none"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="time" className="block text-gray-700 font-regular mb-2">Hora:</label>
-                        <input
-                            type="time"
-                            id="time"
-                            name="time"
-                            value={formData.time}
                             onChange={handleChange}
                             className="w-full px-3 py-2 border border-[#CCCCCC] rounded-md focus:outline-none"
                             required
@@ -164,3 +283,8 @@ export function AppointmentForm() {
         </div>
     );
 }
+
+
+
+
+

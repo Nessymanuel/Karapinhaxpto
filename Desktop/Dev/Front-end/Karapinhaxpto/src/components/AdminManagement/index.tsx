@@ -35,23 +35,32 @@ const AdminManagement: React.FC<AdminManagementProps> = ({ onClose }) => {
 
     const handleToggleBlock = async (userId: number) => {
         try {
-            const updatedUsers = users.map(user =>
-                user.id === userId ? { ...user, status: !user.status } : user
-            );
-            setUsers(updatedUsers);
-            console.log(`Conta do usuário ${userId} bloqueada/desbloqueada.`);
+            // Enviar uma solicitação ao servidor para atualizar o status do usuário
+            const user = users.find(user => user.id === userId);
+            if (user) {
+                const updatedUser = { ...user, status: !user.status };
+                await axios.put(`https://localhost:7104/api/User/${userId}`, updatedUser);
+
+                // Atualizar o estado localmente após a atualização bem-sucedida
+                setUsers(prevUsers =>
+                    prevUsers.map(u =>
+                        u.id === userId ? { ...u, status: !u.status } : u
+                    )
+                );
+                console.log(`Conta do usuário ${userId} bloqueada/desbloqueada.`);
+            }
         } catch (error) {
             console.error(`Erro ao bloquear/desbloquear conta do usuário ${userId}:`, error);
         }
     };
 
     return (
-        <div className="bg-white p-6 rounded-lg shadow-lg">
+        <div>
             {isFormOpen ? (
-                <Form profileId={2} onClose={() => setIsFormOpen(false)} />
+                <Form profileId={3} onClose={() => setIsFormOpen(false)} />
             ) : (
                 <>
-                    <div className='flex justify-between items-center '>
+                    <div className='flex justify-between items-center'>
                         <div>
                             <h2 className="text-2xl font-semibold mb-4">Administrativos</h2>
                         </div>
@@ -76,7 +85,7 @@ const AdminManagement: React.FC<AdminManagementProps> = ({ onClose }) => {
                                         className={`py-1 px-3 rounded ${user.status ? 'bg-red-500 text-white' : 'bg-yellow-500 text-black'}`}
                                         onClick={() => handleToggleBlock(user.id)}
                                     >
-                                        {user.status ? 'Desbloquear' : 'Bloquear'}
+                                        {user.status ? 'Bloquear' : 'Desbloquear'}
                                     </button>
                                 </div>
                             </li>
@@ -89,4 +98,5 @@ const AdminManagement: React.FC<AdminManagementProps> = ({ onClose }) => {
 };
 
 export default AdminManagement;
+
 

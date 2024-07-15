@@ -33,7 +33,7 @@ export function Navbar() {
                                 Entrar
                             </button>
                         </a>
-                        <a href="/Form">
+                        <a href="/SignUp">
                             <button className="bg-[#0c0a09] text-white px-4 py-2 rounded-full hover:scale-105 duration-300">
                                 Registrar-se
                             </button>

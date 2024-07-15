@@ -6,6 +6,9 @@ import { ServiceForm } from '../../components/ServiceForm';
 import { ManageServices } from '../../components/ManageServices';
 import ManageProfessional from '../../components/ManegeProfissional';
 import { ProfissionalForm } from '../../components/ProfissionalForm';
+import Calendar from 'react-calendar';
+
+
 
 interface Appointment {
     id: number;
@@ -35,6 +38,7 @@ export function AdminDashboard() {
         fetchAppointments();
     }, []);
 
+
     const fetchAppointments = async () => {
         try {
             const response = await fetch('https://localhost:7104/api/ServiceAppointment');
@@ -42,28 +46,33 @@ export function AdminDashboard() {
                 throw new Error('Failed to fetch data');
             }
             const data = await response.json();
-            
-            // Extrair dados necessários da resposta da API
+
             const extractedAppointments: Appointment[] = data.map((item: any) => ({
                 id: item.id,
                 professional: item.profissional.name,
                 service: item.service.description,
+                client: item.client.name,
                 price: item.service.price,
                 date: item.date,
-                time: item.schedule.description,
+                time: item.time,
             }));
             setAppointments(extractedAppointments);
 
-            // Calcular o total faturado
-            const total = data.reduce((acc: number, item: any) => acc + item.service.price, 0);
-            setTotalRevenue(total);
+            // Calcular valores faturados
+            const revenueToday = calculateRevenueByDate(data, new Date());
+            const revenueYesterday = calculateRevenueByDate(data, new Date(Date.now() - 86400000));
+            const revenueThisMonth = calculateRevenueByMonth(data, new Date().getMonth());
+            const revenueLastMonth = calculateRevenueByMonth(data, new Date().getMonth() - 1);
 
-            // Encontrar o serviço mais solicitado
+            setTotalRevenueToday(revenueToday);
+            setTotalRevenueYesterday(revenueYesterday);
+            setTotalRevenueThisMonth(revenueThisMonth);
+            setTotalRevenueLastMonth(revenueLastMonth);
+
+            // Encontrar o serviço mais e menos solicitado
             const mostRequested = findMostRequestedService(data);
-            setMostRequestedService(mostRequested);
-
-            // Encontrar o serviço menos solicitado
             const leastRequested = findLeastRequestedService(data);
+            setMostRequestedService(mostRequested);
             setLeastRequestedService(leastRequested);
 
             // Encontrar os top 5 profissionais
@@ -74,27 +83,55 @@ export function AdminDashboard() {
         }
     };
 
+    const calculateRevenueByDate = (data: any[], date: Date): number => {
+        return data.filter(item => new Date(item.date).toDateString() === date.toDateString())
+            .reduce((acc, item) => acc + item.service.price, 0);
+    };
+
+    const calculateRevenueByMonth = (data: any[], month: number): number => {
+        return data.filter(item => new Date(item.date).getMonth() === month)
+            .reduce((acc, item) => acc + item.service.price, 0);
+    };
+
+    // Atualize os estados usados para os valores faturados:
+    const [totalRevenueToday, setTotalRevenueToday] = useState<number>(0);
+    const [totalRevenueYesterday, setTotalRevenueYesterday] = useState<number>(0);
+    const [totalRevenueThisMonth, setTotalRevenueThisMonth] = useState<number>(0);
+    const [totalRevenueLastMonth, setTotalRevenueLastMonth] = useState<number>(0);
+
+
+
     const findMostRequestedService = (data: any[]): string => {
+        // Lógica para encontrar o serviço mais solicitado
+        // Aqui você implementa a lógica específica de acordo com seus critérios
         return data[0]?.service?.description || '';
     };
 
     const findLeastRequestedService = (data: any[]): string => {
+        // Lógica para encontrar o serviço menos solicitado
+        // Aqui você implementa a lógica específica de acordo com seus critérios
         return data[data.length - 1]?.service?.description || '';
     };
 
     const findTopProfessionals = (data: any[]): ProfessionalData[] => {
+        // Lógica para encontrar os top 5 profissionais com mais marcações
+        // Aqui você implementa a lógica específica de acordo com seus critérios
         return data.slice(0, 5).map((item: any, index: number) => ({
             id: item.profissional.id,
             name: item.profissional.name,
-            appointments: index + 1, 
+            appointments: index + 1, // Exemplo simples, pode adaptar conforme necessário
         }));
     };
 
     const handleConfirmation = (id: number) => {
-       
+        // Lógica para confirmar uma marcação pelo ID
+        // Aqui seria onde você chamaria a API ou atualizaria o estado local
+        alert(`Marcação ${id} confirmada.`);
     };
 
     const handleReschedule = (id: number) => {
+        // Lógica para reagendar uma marcação pelo ID
+        // Aqui seria onde você chamaria a API ou atualizaria o estado local
         alert(`Reagendar Marcação ${id}.`);
     };
 
@@ -106,7 +143,7 @@ export function AdminDashboard() {
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                         <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Profissional
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -136,8 +173,8 @@ export function AdminDashboard() {
                                     {appointment.service}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                     {appointment.price.toFixed(2)} Kz
-                                 </td>
+                                    R$ {appointment.price.toFixed(2)}
+                                </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {new Date(appointment.date).toLocaleDateString()}
                                 </td>
@@ -147,13 +184,13 @@ export function AdminDashboard() {
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <button
                                         onClick={() => handleConfirmation(appointment.id)}
-                                        className="bg-red-500 hover:bg-red-900 text-white font-bold py-1 px-3 rounded mr-2"
-                                    >  
+                                        className="text-indigo-600 hover:text-indigo-900"
+                                    >
                                         Confirmar
                                     </button>
                                     <button
                                         onClick={() => handleReschedule(appointment.id)}
-                                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2"
+                                        className="text-red-600 hover:text-red-900 ml-2"
                                     >
                                         Reagendar
                                     </button>
@@ -165,6 +202,16 @@ export function AdminDashboard() {
             </div>
         );
     };
+    const renderCalendar = () => {
+        const [date, setDate] = useState<Date | Date[]>(new Date());
+    
+        return (
+            <div>
+                <h2 className="text-2xl font-bold mb-4">Agenda</h2>
+                <Calendar onChange={Date}/>
+            </div>
+        );
+    };
 
     const renderDashboard = () => {
         return (
@@ -172,32 +219,42 @@ export function AdminDashboard() {
                 <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
                 <div className="grid grid-cols-2 gap-4">
                     <div className="bg-white rounded-lg shadow-md p-4">
-                        <h3 className="text-lg font-bold mb-2">Valor Faturado</h3>
-                        <p className="text-gray-600">{totalRevenue.toFixed(2)} Kz</p>
+                        <h3 className="text-lg font-bold mb-2">Valor Faturado Hoje</h3>
+                        <p className="text-gray-600">R$ {totalRevenueToday.toFixed(2)}</p>
                     </div>
                     <div className="bg-white rounded-lg shadow-md p-4">
-                        <h3 className="text-lg font-bold mb-2">Serviço Mais Solicitado</h3>
-                        <p className="text-gray-600">{mostRequestedService}</p>
+                        <h3 className="text-lg font-bold mb-2">Valor Faturado Ontem</h3>
+                        <p className="text-gray-600">R$ {totalRevenueYesterday.toFixed(2)}</p>
                     </div>
                     <div className="bg-white rounded-lg shadow-md p-4">
-                        <h3 className="text-lg font-bold mb-2">Serviço Menos Solicitado</h3>
-                        <p className="text-gray-600">{leastRequestedService}</p>
+                        <h3 className="text-lg font-bold mb-2">Valor Faturado Este Mês</h3>
+                        <p className="text-gray-600">R$ {totalRevenueThisMonth.toFixed(2)}</p>
                     </div>
                     <div className="bg-white rounded-lg shadow-md p-4">
-                        <h3 className="text-lg font-bold mb-2">Top 5 Profissionais</h3>
-                        <ul className="divide-y divide-gray-200">
-                            {topProfessionals.map((professional) => (
-                                <li key={professional.id} className="py-2">
-                                    <span className="font-medium">{professional.name}</span> -
-                                    <span className="text-gray-600 ml-2">{professional.appointments} marcações</span>
-                                </li>
-                            ))}
-                        </ul>
+                        <h3 className="text-lg font-bold mb-2">Valor Faturado Mês Passado</h3>
+                        <p className="text-gray-600">R$ {totalRevenueLastMonth.toFixed(2)}</p>
                     </div>
+                </div>
+                <div className="mt-8">
+                    <h3 className="text-lg font-bold mb-2">Serviço Mais Solicitado</h3>
+                    <p className="text-gray-600">{mostRequestedService}</p>
+                </div>
+                <div className="mt-8">
+                    <h3 className="text-lg font-bold mb-2">Serviço Menos Solicitado</h3>
+                    <p className="text-gray-600">{leastRequestedService}</p>
+                </div>
+                <div className="mt-8">
+                    <h3 className="text-lg font-bold mb-2">Top 5 Profissionais</h3>
+                    <ul className="list-disc pl-5">
+                        {topProfessionals.map((professional, index) => (
+                            <li key={index}>{professional.appointments}</li>
+                        ))}
+                    </ul>
                 </div>
             </div>
         );
     };
+
 
     const renderContent = () => {
         switch (activeSection) {
@@ -236,6 +293,8 @@ export function AdminDashboard() {
                 );
             case 'marcações':
                 return renderAppointments();
+            case 'agenda':
+                return renderCalendar();
             case 'dashboard':
                 return renderDashboard();
             default:
@@ -250,7 +309,7 @@ export function AdminDashboard() {
             </div>
 
             <div className="flex flex-col md:flex-row gap-4">
-                
+
                 {/* Coluna do UserProfile */}
                 <div className="md:w-1/6 lg:w-1/5">
                     <UserProfile
@@ -296,12 +355,18 @@ export function AdminDashboard() {
                         >
                             Marcações
                         </button>
-                        
+
                         <button
                             className={`px-4 py-2 rounded-md ${activeSection === 'dashboard' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
                             onClick={() => setActiveSection('dashboard')}
                         >
                             Dashboard
+                        </button>
+                        <button
+                            className={`px-4 py-2 rounded-md ${activeSection === 'agenda' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                            onClick={() => setActiveSection('agenda')}
+                        >
+                            Agenda
                         </button>
                     </div>
 
@@ -314,5 +379,3 @@ export function AdminDashboard() {
         </div>
     );
 }
-
-

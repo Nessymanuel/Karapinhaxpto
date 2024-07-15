@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useAuth } from "../../context/AuthContext";
 
 interface UserProfileProps {
   user: any;
   logout: () => void;
 }
 
-export const UserProfile: React.FC<UserProfileProps> = ({ user, logout }) => {
+
+export const UserProfile: React.FC<UserProfileProps> = ({  logout }) => {
+  const { user } = useAuth();
   const [editMode, setEditMode] = useState(false);
   const [userData, setUserData] = useState<any>({});
   const [tempUserData, setTempUserData] = useState<any>({});
@@ -41,6 +44,8 @@ export const UserProfile: React.FC<UserProfileProps> = ({ user, logout }) => {
   }, [user]);
 
   const handleEdit = () => {
+    
+    console.log(tempUserData)
     setEditMode(true);
     setFileInputVisible(true);
   };
@@ -54,8 +59,8 @@ export const UserProfile: React.FC<UserProfileProps> = ({ user, logout }) => {
       localStorage.setItem("userData", JSON.stringify(tempUserData));
 
       // Atualiza os dados no servidor
-      const userId = user?.email; 
-      await axios.put(`https://localhost:7104/api/User/updateByEmail/${userId}`, tempUserData);
+      const userId = user?.id; 
+      await axios.put(`https://localhost:7104/api/User/${userId}`, tempUserData);
 
       
       if (selectedFile) {
